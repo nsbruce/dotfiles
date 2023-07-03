@@ -1,0 +1,87 @@
+# keybindings
+
+bindkey "^[[A" history-beginning-search-backward # start typing then up to match history
+bindkey "^[[B" history-beginning-search-forward # start typing then down to match history
+bindkey "^[." insert-last-word # insert last word (alt+.)
+bindkey "^[[1;5D" backward-word # ctrl+left to move back a word
+bindkey "^[[1;5C" forward-word # ctrl+right to move forward a word
+bindkey "^A" end-of-line # ctrl+a to move to end of line (needed twice if tmux prefix is ctrl-A)
+bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
+
+# Initialize above settings
+autoload -Uz compinit && compinit
+
+alias ls='ls --color'
+alias ll='ls --color -lah'
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt appendhistory
+setopt hist_ignore_all_dups hist_ignore_dups # ignore duplicates
+setopt extended_history # save timestamp and duration
+setopt hist_ignore_space # ignore commands starting with space
+setopt hist_reduce_blanks # remove superfluous blanks before recording
+setopt hist_verify # show command with history expansion to user before running it
+setopt share_history # write to history file immediately
+
+# Autocorrect/complete
+setopt correct
+setopt auto_cd
+
+# Default editor
+EDITOR="nvim"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+
+# theme
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
+source ~/.p10k.zsh
+[ -f ~/.dir_colors/dircolors ] && eval `dircolors ~/.dir_colors/dircolors`
+
+# ssh
+if [[ -z "$SSH_TTY" ]]; then
+    # If not in an SSH session
+    if [[ -z "$SSH_AUTH_SOCK" ]]; then
+        # If there is no ssh authentication socket
+        # Check if there is an existing agent socket by parsing /tmp/agent.*
+        existing_agent_socket=$(find /tmp -uid "$(id -u)" -type s -name "agent.*" 2>/dev/null | head -n 1)
+        if [[ -n "$existing_agent_socket" ]]; then
+            # If there is an existing agent socket
+            # set the environment variable
+            export SSH_AUTH_SOCK="$existing_agent_socket"
+        else
+            # If there was no existing socket, start a new agent
+            eval "$(ssh-agent -s)"
+            # Add identity to agent
+            ssh-add
+        fi
+    fi
+fi
+
+
+# multiplexing
+if test -z "$TMUX"; then
+    # if not already inside a tmux session
+    # attach to any unused sessions, or start a new session
+    session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)
+    if [[ $session == "" ]]; then
+        # the exec part replaces the current process with tmux so exit means exit terminal too
+        exec tmux new-session
+    else
+        exec tmux attach -t $session
+    fi
+fi
+
+# zsh functions
+export ZSH_FUNCS_DIR=$HOME/.zsh_funcs
+if [[ -n "$(ls -A $ZSH_FUNCS_DIR)" ]]; then
+    # if the directory is not empty
+    for file in $ZSH_FUNCS_DIR/*.zsh; do
+        source $file
+    done
+fi

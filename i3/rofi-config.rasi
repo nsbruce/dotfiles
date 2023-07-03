@@ -1,0 +1,56 @@
+configuration {
+    font: "MesloLGS NF 14";
+    modi: "drun,run";
+    show-icons: true;
+}
+* {
+    font: "MesloLGS NF 14";
+
+    foreground: #f8f8f2;
+    normal-foreground: @foreground;
+    selected-normal-foreground: @foreground;
+    selected-urgent-foreground: @foreground;
+    selected-active-foreground: @foreground;
+    urgent-foreground: @foreground;
+    active-foreground: @foreground;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-foreground: @foreground;
+    alternate-active-foreground: @foreground;
+
+    background: #282a36;
+    normal-background: @background;
+    alternate-normal-background: @background;
+    active-background: #6272a4;
+    selected-normal-background: @active-background;
+    selected-background: @active-background;
+    selected-active-background: @active-background;
+    alternate-active-background: @active-background;
+    urgent-background: #ff5555;
+    alternate-urgent-background: @urgent-background;
+    selected-urgent-background: @urgent-background;
+    background-color: @background;
+
+    separatorcolor: @active-background;
+    bordercolor: @active-background;
+    border-color: @bordercolor;
+
+    spacing: 2;
+}
+
+window {
+    border: 1;
+    border-radius: 6;
+    padding: 5;
+    /* gnarly - "real" is preferred (https://davatorium.github.io/rofi/guides/Transparency/theme3-transparency/) */
+    transparency: "screenshot";
+}
+listview {
+    scrollbar: false;
+}
+textbox-prompt-colon {
+    expand: false;
+    str: ">";
+}
+prompt {
+    enabled: false;
+}

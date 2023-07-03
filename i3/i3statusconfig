@@ -1,0 +1,65 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#50FA7B"
+  color_degraded = "#F1FA8C"
+  color_bad = "#FF5555"
+}
+
+
+# order += “cpu_usage”
+# cpu_usage {
+#   format = “CPU %usage”
+#   max_threshold = 75
+# }
+
+# wireless wlan0 {
+#   format_up = "W: (%quality at %essid, %bitrate) %ip"
+#   format_down = "W: down"
+# }
+
+# ethernet eth0 {
+#   format_up = "E: %ip (%speed)"
+#   format_down = "E: down"
+# }
+
+# battery 0 {
+#   format = "%status %percentage %remaining %emptytime"
+#   format_down = "No battery"
+#   status_chr = "⚡ CHR"
+#   status_bat = "🔋 BAT"
+#   status_unk = "? UNK"
+#   status_full = "☻ FULL"
+#   path = "/sys/class/power_supply/BAT%d/uevent"
+#   low_threshold = 10
+# }
+order += "volume master"
+volume master {
+  format = "🔊 (%volume)"
+  format_muted = "🔇 (%volume)"
+  device = "default"
+}
+
+order += "tztime utc"
+tztime utc {
+  format = "%Y-%m-%dT%H:%M:%S"
+  timezone = "UTC"
+}
+
+
+order += "memory"
+memory {
+  format = "🐏 %used/%total"
+  threshold_degraded = "10%"
+  format_degraded = "MEMORY: %free"
+}
+
+order += "disk /"
+disk "/" {
+  format = "💾 (%free)"
+}
+
+order += "tztime local"
+tztime local {
+  format = "%H:%M"
+}
