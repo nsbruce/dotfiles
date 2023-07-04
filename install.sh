@@ -1,17 +1,5 @@
 #!/bin/bash
 
-case "$(uname -s)" in
-    Darwin)
-        install_cmd="./install-mac.sh"
-        ;;
-    Linux)
-        install_cmd="./install-ubuntu.sh"
-        ;;
-    *)
-        echo "OS not supported"
-        exit 1
-        ;;
-esac
 
 
 case $1 in
@@ -35,6 +23,20 @@ if [[ "$EUID" -eq 0 ]]; then
 else
     install_prefix="sudo"
 fi
+
+case "$(uname -s)" in
+    Darwin)
+        install_cmd="./install-mac.sh"
+        ;;
+    Linux)
+        install_cmd="./install-ubuntu.sh"
+        $install_prefix apt-get update
+        ;;
+    *)
+        echo "OS not supported"
+        exit 1
+        ;;
+esac
 
 
 for directory in ${directories[@]}
