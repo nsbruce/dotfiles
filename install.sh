@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-
 case $1 in
     -p|--primary)
         echo "Installing primary dotfiles"
@@ -17,12 +16,15 @@ case $1 in
         ;;
 esac
 
-# if user is root don't prefix with sudo
+
 if [[ "$EUID" -eq 0 ]]; then
+    # if user is root don't prefix with sudo
     install_prefix=""
 else
-    install_prefix="sudo"
+    # if user is not root prefix with sudo but make sure to keep env variables ($HOME)
+    install_prefix="sudo -E"
 fi
+
 
 case "$(uname -s)" in
     Darwin)
