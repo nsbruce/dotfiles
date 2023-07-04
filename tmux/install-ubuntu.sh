@@ -2,7 +2,7 @@
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-sudo apt-get install -y xsel python3-pip tmux
+apt-get install -y xsel python3-pip tmux
 
 python3 -m pip install --user libtmux
 

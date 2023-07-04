@@ -13,7 +13,6 @@ case "$(uname -s)" in
         ;;
 esac
 
-directories=(  )
 
 case $1 in
     -p|--primary)
@@ -30,13 +29,20 @@ case $1 in
         ;;
 esac
 
+# if user is root don't prefix with sudo
+if [[ "$EUID" -eq 0 ]]; then
+    install_prefix=""
+else
+    install_prefix="sudo"
+fi
+
 
 for directory in ${directories[@]}
 do
     # Run the install for each
-    cd $directory
+    cd $directory || exit 1
     echo "Installing $directory"
-    $install_cmd
+    $install_prefix $install_cmd
     cd ..
     echo ""
 done

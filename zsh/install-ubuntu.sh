@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sudo apt-get install -y fzf tmux git zsh
+apt-get install -y fzf tmux git zsh
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
 

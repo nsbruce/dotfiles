@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install -y docker fzf
+apt-get install -y docker fzf
 
 # Build the Docker image which will contain the binary.
 docker build -t kmonad-builder github.com/kmonad/kmonad.git
@@ -9,24 +9,24 @@ docker build -t kmonad-builder github.com/kmonad/kmonad.git
 # built binary to the host's current directory bind-mounted inside the
 # container at /host/.
 docker run --rm -it -v ${PWD}:/host/ kmonad-builder bash -c 'cp -vp /root/.local/bin/kmonad /host/'
-sudo mv ${PWD}/kmonad /usr/local/bin/kmonad
+mv ${PWD}/kmonad /usr/local/bin/kmonad
 
 # Clean up build image, since it is no longer needed.
 docker rmi kmonad-builder
 
 # setup uinput permissions
-sudo groupadd uinput
-sudo usermod -aG input $USER
-sudo usermod -aG uinput $USER
+groupadd uinput
+usermod -aG input $USER
+usermod -aG uinput $USER
 
-sudo ln -s ${PWD}/50-kmonad.rules /etc/udev/rules.d/50-kmonad.rules
+ln -s ${PWD}/50-kmonad.rules /etc/udev/rules.d/50-kmonad.rules
 
-sudo modprobe uinput
+modprobe uinput
 echo "You may need to reboot for uinput to work"
 
 # put the kbd files somewhere useful
-sudo mkdir -p /opt/kmonad
-sudo chown -R $USER:$USER /opt/kmonad
+mkdir -p /opt/kmonad
+chown -R $USER:$USER /opt/kmonad
 ln -s ${PWD}/*.kbd /opt/kmonad/
 
 
@@ -36,6 +36,6 @@ source ${PWD}/kmonad.zsh
 
 # setup systemd service
 get_best_kbd
-sudo ln -s ${PWD}/kmonad.service /etc/systemd/system/kmonad.service
-sudo systemctl enable kmonad.service
-sudo systemctl start kmonad
+ln -s ${PWD}/kmonad.service /etc/systemd/system/kmonad.service
+systemctl enable kmonad.service
+systemctl start kmonad
