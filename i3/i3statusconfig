@@ -22,17 +22,19 @@ general {
 #   format_up = "E: %ip (%speed)"
 #   format_down = "E: down"
 # }
+order += "battery 0"
+battery 0 {
+  format = "%status %percentage %remaining %emptytime"
+  format_down = "No battery"
+  status_chr = "⚡"
+  status_bat = "🔋"
+  status_unk = "? UNKNOWN"
+  status_full = "☻"
+  path = "/sys/class/power_supply/BAT%d/uevent"
+  low_threshold = 10
+  integer_battery_capacity = true
+}
 
-# battery 0 {
-#   format = "%status %percentage %remaining %emptytime"
-#   format_down = "No battery"
-#   status_chr = "⚡ CHR"
-#   status_bat = "🔋 BAT"
-#   status_unk = "? UNK"
-#   status_full = "☻ FULL"
-#   path = "/sys/class/power_supply/BAT%d/uevent"
-#   low_threshold = 10
-# }
 order += "volume master"
 volume master {
   format = "🔊 (%volume)"
