@@ -13,6 +13,8 @@ autoload -Uz compinit && compinit
 
 alias ls='ls --color'
 alias ll='ls --color -lah'
+alias l='ls'
+alias la='ls -a'
 
 # History
 HISTFILE=~/.zsh_history
@@ -71,9 +73,9 @@ if test -z "$TMUX"; then
     session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)
     if [[ $session == "" ]]; then
         # the exec part replaces the current process with tmux so exit means exit terminal too
-        exec tmux new-session
+        tmux new-session
     else
-        exec tmux attach -t $session
+        tmux attach -t $session
     fi
 fi
 
