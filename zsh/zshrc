@@ -72,10 +72,10 @@ if test -z "$TMUX"; then
     # attach to any unused sessions, or start a new session
     session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)
     if [[ $session == "" ]]; then
-        # the exec part replaces the current process with tmux so exit means exit terminal too
-        tmux new-session
+        # the exit meant if we type exit in tmux, it would exit the terminal
+        tmux new-session && exit
     else
-        tmux attach -t $session
+        tmux attach -t $session && exit
     fi
 fi
 
