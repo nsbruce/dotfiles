@@ -21,10 +21,12 @@ vim.opt.rtp:prepend(lazypath)--
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  -- Add support for sudo write
+  'lambdalisue/suda.vim',
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -102,6 +104,7 @@ require('lazy').setup({
       vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     end,
   },
+
 })
 
 -- Set highlight on search
@@ -186,3 +189,6 @@ require('nvim-treesitter.configs').setup {
 
   highlight = { enable = true },
 }
+
+-- Add shortcut :w!! for sudawrite
+vim.api.nvim_set_keymap('n', ':w!!', ':SudaWrite', { noremap = true, silent = false })
