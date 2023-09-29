@@ -181,8 +181,8 @@ bindsym $mod+Shift+d move workspace to output left
 bindsym $mod+l exec mi3lock
 
 # only show borders between windows
-default_border pixel
-default_floating_border pixel
+default_border pixel 3
+default_floating_border pixel 3
 hide_edge_borders none
 # smart_borders off
 
