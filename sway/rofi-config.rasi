@@ -42,7 +42,8 @@ window {
     border-radius: 6;
     padding: 5;
     /* gnarly - "real" is preferred (https://davatorium.github.io/rofi/guides/Transparency/theme3-transparency/) */
-    transparency: "screenshot";
+    /* transparency: "screenshot"; */
+    transparency: "real";
 }
 listview {
     scrollbar: false;

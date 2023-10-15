@@ -30,3 +30,6 @@ rm -r rofi
 mkdir -p $HOME/.config/rofi
 ln -s $PWD/rofi-config.rasi $HOME/.config/config.rasi
 
+sudo apt-get install -y i3status
+mkdir -p ${HOME}/.config/i3status
+ln -s ${PWD}/i3statusconfig ${HOME}/.config/i3status/config
