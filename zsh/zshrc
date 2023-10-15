@@ -45,6 +45,10 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 source ~/.p10k.zsh
 [ -f ~/.dir_colors/dircolors ] && eval `dircolors ~/.dir_colors/dircolors`
 
+# PATH THIS SHOULD BE DEFAULT BUT THERES A BUG SOMEHOW
+# https://bugs.launchpad.net/ubuntu/+source/bash/+bug/1968007
+PATH=$HOME/.local/bin:$PATH
+
 # ssh
 if [[ -z "$SSH_TTY" ]]; then
     # If not in an SSH session
