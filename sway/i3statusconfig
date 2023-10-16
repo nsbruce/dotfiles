@@ -13,15 +13,17 @@ general {
 #   max_threshold = 75
 # }
 
-# wireless wlan0 {
-#   format_up = "W: (%quality at %essid, %bitrate) %ip"
-#   format_down = "W: down"
-# }
+order += "wireless wlp0s20f3"
+wireless wlp0s20f3 {
+  format_up = "W: (%quality at %essid, %bitrate) %ip"
+  format_down = "W: down"
+}
 
-# ethernet eth0 {
-#   format_up = "E: %ip (%speed)"
-#   format_down = "E: down"
-# }
+order += "ethernet enx803f5d054e23"
+ethernet enx803f5d054e23 {
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
 order += "battery 0"
 battery 0 {
   format = "%status %percentage %remaining %emptytime"
