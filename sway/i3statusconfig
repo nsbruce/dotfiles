@@ -13,17 +13,18 @@ general {
 #   max_threshold = 75
 # }
 
-order += "wireless wlp0s20f3"
-wireless wlp0s20f3 {
-  format_up = "W: (%quality at %essid, %bitrate) %ip"
-  format_down = "W: down"
+order += "wireless _first_"
+wireless _first_ {
+  format_up = "🛜 (%quality at %essid, %bitrate) %ip"
+  format_down = ""
 }
 
-order += "ethernet enx803f5d054e23"
-ethernet enx803f5d054e23 {
-  format_up = "E: %ip (%speed)"
-  format_down = "E: down"
+order += "ethernet _first_"
+ethernet _first_ {
+  format_up = "🌐 %ip (%speed)"
+  format_down = ""
 }
+
 order += "battery 0"
 battery 0 {
   format = "%status %percentage %remaining %emptytime"
@@ -31,7 +32,7 @@ battery 0 {
   status_chr = "⚡"
   status_bat = "🔋"
   status_unk = "? UNKNOWN"
-  status_full = "☻"
+  status_full = "🥛"
   path = "/sys/class/power_supply/BAT%d/uevent"
   low_threshold = 10
   integer_battery_capacity = true

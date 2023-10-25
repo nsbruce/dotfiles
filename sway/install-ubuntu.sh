@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## deps
+apt-get install -y sway slurp grim
+
 ## deps for swaylock-effects
 apt-get install -y libxkbcommon-dev meson wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam-cracklib
 
@@ -28,7 +31,7 @@ cd -
 rm -r rofi
 
 mkdir -p $HOME/.config/rofi
-ln -s $PWD/rofi-config.rasi $HOME/.config/config.rasi
+ln -s $PWD/rofi-config.rasi $HOME/.config/rofi/config.rasi
 
 sudo apt-get install -y i3status
 mkdir -p ${HOME}/.config/i3status

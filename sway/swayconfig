@@ -19,6 +19,12 @@ font pango:MesloLGS NF 11
 # Your preferred terminal emulator
 set $term gnome-terminal
 
+# Screenshots (https://sr.ht/~emersion/grim/)
+# select region and send to file
+bindsym Print exec grim -g "$(slurp)"
+# select region and send to clipboard
+bindsym Shift+Print exec grim -g $(slurp) - | wl-copy -t image/png
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -80,6 +86,9 @@ bindsym $mod+l exec $HOME/.local/bin/myswaylock
 #
 # Basics:
 #
+    # Use Mouse+$mod to drag floating windows to their wanted position
+    floating_modifier $mod
+
     # Start a terminal
     bindsym $mod+Return exec $term
 

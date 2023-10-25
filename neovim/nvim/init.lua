@@ -56,10 +56,11 @@ require('lazy').setup({
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
+    -- See `:help indent_blankline.txt`c
+    main = 'ibl',
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+      -- char = '┊',
+      -- show_trailing_blankline_indent = false,
     },
   },
 
@@ -189,6 +190,9 @@ require('nvim-treesitter.configs').setup {
 
   highlight = { enable = true },
 }
+
+-- Configure indent-blankline
+require('ibl').setup()
 
 -- Add shortcut :w!! for sudawrite
 vim.api.nvim_set_keymap('n', ':w!!', ':SudaWrite', { noremap = true, silent = false })

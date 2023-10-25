@@ -49,6 +49,9 @@ source ~/.p10k.zsh
 # https://bugs.launchpad.net/ubuntu/+source/bash/+bug/1968007
 PATH=$HOME/.local/bin:$PATH
 
+# XDG might need help with snap
+XDG_DATA_DIRS=/var/lib/snapd/desktop:$XDG_DATA_DIRS
+
 # ssh
 if [[ -z "$SSH_TTY" ]]; then
     # If not in an SSH session
