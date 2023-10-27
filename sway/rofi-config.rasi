@@ -1,6 +1,6 @@
 configuration {
     font: "MesloLGS NF 14";
-    modi: "drun,run";
+    modi: "drun,calc,ssh,run";
     show-icons: true;
 }
 * {

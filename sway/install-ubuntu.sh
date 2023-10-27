@@ -1,7 +1,10 @@
 #!/bin/bash
 
 ## deps
-apt-get install -y sway slurp grim
+apt-get install -y sway slurp grim brightnessctl wev
+
+# for brightnessctl to work
+usermod -aG video $USER
 
 ## deps for swaylock-effects
 apt-get install -y libxkbcommon-dev meson wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam-cracklib
@@ -29,6 +32,20 @@ ninja -C build
 sudo ninja -C build install
 cd -
 rm -r rofi
+
+## rofi-calc
+apt-get install -y rofi-dev qalc libtool
+git clone https://github.com/svenstaro/rofi-calc.git
+cd rofi-calc/
+mkdir m4
+autoreconf -i
+mkdir build
+cd build/
+../configure
+make
+make install
+cd ../..
+rm -r rofi-calc
 
 mkdir -p $HOME/.config/rofi
 ln -s $PWD/rofi-config.rasi $HOME/.config/rofi/config.rasi

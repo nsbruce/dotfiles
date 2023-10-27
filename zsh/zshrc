@@ -50,7 +50,7 @@ source ~/.p10k.zsh
 PATH=$HOME/.local/bin:$PATH
 
 # XDG might need help with snap
-XDG_DATA_DIRS=/var/lib/snapd/desktop:$XDG_DATA_DIRS
+# XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/snapd/desktop
 
 # ssh
 if [[ -z "$SSH_TTY" ]]; then

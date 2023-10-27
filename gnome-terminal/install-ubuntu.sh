@@ -27,6 +27,9 @@ dconf write $profile_dir/bold-color "'$(cat $PWD/bd_color)'"
 dconf write $profile_dir/background-color "'$(cat $PWD/bg_color)'"
 dconf write $profile_dir/foreground-color "'$(cat $PWD/fg_color)'"
 
+# set font
+dconf write $profile_dir/font "MesloLGS NF Regular 11"
+
 # set as default profile
 dconf write $dconfdir/default "'$profile_id'"
 
