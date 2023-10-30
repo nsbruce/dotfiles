@@ -53,3 +53,25 @@ ln -s $PWD/rofi-config.rasi $HOME/.config/rofi/config.rasi
 sudo apt-get install -y i3status
 mkdir -p ${HOME}/.config/i3status
 ln -s ${PWD}/i3statusconfig ${HOME}/.config/i3status/config
+
+# notifications via mako
+apt-get install -y jq gperf libnotify-bin
+# basu is a dependency of mako
+git clone https://git.sr.ht/~emersion/basu
+cd basu
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r basu
+
+git clone https://github.com/emersion/mako
+cd mako
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r mako
+
+mkdir -p $HOME/.config/mako
+ln -s $PWD/makoconfig $HOME/.config/mako/config
