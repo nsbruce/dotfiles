@@ -75,3 +75,13 @@ rm -r mako
 
 mkdir -p $HOME/.config/mako
 ln -s $PWD/makoconfig $HOME/.config/mako/config
+
+git clone https://git.sr.ht/~emersion/kanshi
+cd kanshi
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r kanshi
+
+mkdir -p $HOME/.config/kanshi

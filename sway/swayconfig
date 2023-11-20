@@ -52,12 +52,9 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+# Starts kanshi which checks for new monitor configurations
+exec kanshi
+
 
 ### Idle and lock configuration
 
@@ -128,6 +125,13 @@ bindsym $mod+l exec $HOME/.local/bin/myswaylock
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    # Move focused workspace to a different output
+    bindsym $mod+Shift+d move workspace to output left
+    bindsym $mod+Shift+h move workspace to output right
+    bindsym $mod+Shift+j move workspace to output above
+    bindsym $mod+Shift+b move workspace to output below
+
 #
 # Workspaces:
 #
