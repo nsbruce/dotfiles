@@ -85,3 +85,6 @@ cd -
 rm -r kanshi
 
 mkdir -p $HOME/.config/kanshi
+
+# misc scripts
+ln -s $PWD/open-music-workspace $HOME/.local/bin/open-music-workspace

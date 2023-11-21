@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Name of the workspace
+workspace_name="🎶"
+
+# Check whether workspace exists
+if ! swaymsg -t get_workspaces | jq -e ".[] | select(.name == \"$workspace_name\")" >/dev/null; then
+    # If workspace does not exist, create it
+    swaymsg workspace $workspace_name
+    firefox --new-window "https://open.spotify.com"
+else 
+    swaymsg workspace $workspace_name
+fi
