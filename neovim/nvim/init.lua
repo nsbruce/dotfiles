@@ -58,10 +58,7 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`c
     main = 'ibl',
-    opts = {
-      -- char = '┊',
-      -- show_trailing_blankline_indent = false,
-    },
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -215,5 +212,12 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {
     lsp_zero.default_setup,
+  },
+})
+
+-- Neotree stick to right not left
+require('neo-tree').setup({
+  window = {
+	  position = "right",
   },
 })
