@@ -93,7 +93,7 @@ require('lazy').setup({
     build = ":TSUpdate",
   },
 
-  {
+  { -- File browser
   'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     dependencies = {
@@ -106,6 +106,14 @@ require('lazy').setup({
     end,
   },
 
+  -- Language server stuff
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+  {'williamboman/mason.nvim'},
+  {'williamboman/mason-lspconfig.nvim'},
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/nvim-cmp'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'L3MON4D3/LuaSnip'},
 })
 
 -- Set highlight on search
@@ -196,3 +204,16 @@ require('ibl').setup()
 
 -- Add shortcut :w!! for sudawrite
 vim.api.nvim_set_keymap('n', ':w!!', ':SudaWrite', { noremap = true, silent = false })
+
+-- Start up language servers
+local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp_zero.default_setup,
+  },
+})
