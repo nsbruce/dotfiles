@@ -34,25 +34,12 @@ swaylock \
   --clock \
   --indicator \
   --timestr="%H:%M:%S" \
-  --datestr="%A %e %B" \
+  --datestr="%a %b %e" \
   --font="MesloLGS NF Font" \
-  --indicator-radius=120 \
+  --indicator-radius=150 \
   --indicator-thickness=10 \
   --text-color=$blue$alpha \
   --fade-in=0.25 \
   --text-ver-color=$green$alpha \
   --text-clear-color=$orange$alpha \
-#  --verif-text="Checking..." \
-#  --wrong-text="Wrong pswd" \
-#  --noinput="No Input" \
-#  --lock-text="Locking..." \
-#  --lockfailed="Lock Failed" \
-#  --pass-media-keys \
-#  --pass-screen-keys \
-#  --pass-volume-keys \
-#  --verif-color=$green \
-#  --wrong-color=$red \
-#  --layout-color=$blue \
-#  --date-color=$blue \
-#  --time-color=$blue \
 
