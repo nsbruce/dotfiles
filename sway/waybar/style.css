@@ -1,0 +1,67 @@
+@import url("./colors.css");
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Meslo LGS NF;
+    font-size: 12pt;
+    min-height: 0;
+}
+window#waybar {
+    opacity: 1;
+    background: @background;
+    color: @foreground;
+}
+tooltip {
+    background: @background;
+    border: 1px solid @purple;
+    border-radius: 10px;
+    opacity: 0.95;
+}
+tooltip label {
+    color: @foreground;
+}
+#workspaces button {
+    padding: 0 5px;
+    background: @background;
+    color: @foreground;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-image: linear-gradient(0deg, @selection, @background);
+}
+#workspaces button.urgent {
+    background: @red;
+}
+#workspaces button.visible {
+    background: @selection;
+}
+.modules-center {
+    margin-right: 20px;
+}
+#idle_inhibitor, #network, #battery, #pulseaudio, #clock.utc, #memory, #disk, #clock.local {
+    padding: 0 4px;
+    border-right: 2px solid @selection;
+}
+#network {
+    color: @green;
+}
+#network.linked {
+    color: @orange;
+}
+#network.disconnected {
+    color: @red;
+}
+#network.disabled {
+    color: @yellow;
+}
+#battery.warning {
+    color: @orange;
+}
+#battery.critical {
+    color: @red;
+}
+#tray {
+    margin-right: 5px;
+    margin-left: 5px;
+}

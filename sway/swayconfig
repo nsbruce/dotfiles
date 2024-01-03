@@ -52,9 +52,6 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/nsbruce/Pictures/wallpapers/DSCF6578.jpg fill
-# Starts kanshi which checks for new monitor configurations
-exec kanshi
-
 
 ### Idle and lock configuration
 
@@ -70,16 +67,10 @@ bindsym $mod+l exec $HOME/.local/bin/myswaylock
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+
+# Starts kanshi which checks for new monitor configurations
+exec kanshi
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -258,33 +249,7 @@ client.background       #F8F8F2
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+bar swaybar_command waybar
 
-    font MesloLGS NF 12
 
-    colors {
-        background #282A36
-        statusline #F8F8F2
-        separator  #44475A
-
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    status_command i3status
-}
-
-# exec_always {
-    # gsettings set org.gnome.desktop.interface gtk-theme 'ancomblackred'
-    # gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
-    # gsettings set org.gnome.desktop.interface document-font-name 'MesloLGS NF 11'
-    # gsettings set org.gnome.desktop.interface font-name 'MesloLGS NF 11'
-    # gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS NF 11'
-    # gsettings set org.gnome.desktop.interface enable-animations true
-# }
 include /etc/sway/config.d/*
