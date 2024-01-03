@@ -36,6 +36,12 @@ setopt hist_reduce_blanks # remove superfluous blanks before recording
 setopt hist_verify # show command with history expansion to user before running it
 setopt share_history # write to history file immediately
 
+# directory history
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
+setopt PUSHD_IGNORE_DUPS
+alias dirs='dirs -v'
+
 # Autocorrect/complete
 setopt correct
 setopt auto_cd
