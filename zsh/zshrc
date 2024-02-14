@@ -23,6 +23,9 @@ alias :q='exit'
 groot() {
     cd "$(git rev-parse --show-toplevel 2>/dev/null)"
 }
+mine () {
+    sudo chown -R $UID:$GID "$@"
+}
 
 # History
 HISTFILE=~/.zsh_history
