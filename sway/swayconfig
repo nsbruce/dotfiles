@@ -23,7 +23,7 @@ set $term gnome-terminal
 # select region and send to file
 bindsym Print exec grim -g "$(slurp)"
 # select region and send to clipboard
-bindsym Shift+Print exec grim -g $(slurp) - | wl-copy -t image/png
+bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy -t image/png
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
