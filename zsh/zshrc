@@ -50,7 +50,7 @@ setopt correct
 setopt auto_cd
 
 # Default editor
-EDITOR="nvim"
+export EDITOR="nvim"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -91,7 +91,7 @@ fi
 
 
 # multiplexing
-if test -z "$TMUX"; then
+if [[ -z "$TMUX" && -n "$SSH_TTY" ]]; then
     # if not already inside a tmux session
     # attach to any unused sessions, or start a new session
     session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)

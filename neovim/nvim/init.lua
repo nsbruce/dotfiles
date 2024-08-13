@@ -221,3 +221,9 @@ require('neo-tree').setup({
 	  position = "right",
   },
 })
+
+-- don't use insecure files with gopass
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = "/dev/shm/gopass*",
+  command = "setlocal noswapfile nobackup noundofile shada"
+})

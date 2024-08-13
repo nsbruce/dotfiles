@@ -76,6 +76,15 @@ rm -r mako
 mkdir -p $HOME/.config/mako
 ln -s $PWD/makoconfig $HOME/.config/mako/config
 
+# libscfg is a kanshi dependency
+git clone https://git.sr.ht/~emersion/libscfg
+cd libscfg
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r libscfg
+
 # kanshi does automatic display switcheroo-ing
 git clone https://git.sr.ht/~emersion/kanshi
 cd kanshi
@@ -121,3 +130,4 @@ rm -r Waybar
 ln -s $PWD/waybar $HOME/.config/waybar
 # misc scripts
 ln -s $PWD/open-music-workspace $HOME/.local/bin/open-music-workspace
+ls -s $PWD/sway-alias.zsh $ZSH_FUNCS_DIR/sway-alias.zsh
