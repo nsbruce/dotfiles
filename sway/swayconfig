@@ -17,7 +17,7 @@ floating_modifier $mod
 font pango:MesloLGS NF Regular 12
 
 # Your preferred terminal emulator
-set $term gnome-terminal
+set $term ghostty
 
 # Screenshots (https://sr.ht/~emersion/grim/)
 # select region and send to file

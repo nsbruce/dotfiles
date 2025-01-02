@@ -4,7 +4,7 @@
 case $1 in
     -p|--primary)
         echo "Installing primary dotfiles"
-        directories=( git zsh fonts tmux i3 kmonad neovim  )
+        directories=( git zsh fonts tmux i3 kmonad neovim ghostty )
         ;;
     -r|--remote)
         echo "Installing remote dotfiles"

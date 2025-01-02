@@ -9,7 +9,8 @@ bindkey "^A" end-of-line # ctrl+a to move to end of line (needed twice if tmux p
 bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
 
 # Initialize above settings
-autoload -Uz compinit && compinit
+fpath=(/usr/share/zsh/site-functions $fpath)
+autoload -U compinit && compinit
 
 alias ls='ls --color'
 alias ll='ls --color -lah'
@@ -58,8 +59,8 @@ export EDITOR="nvim"
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
 # theme
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-source ~/.p10k.zsh
+# source ~/.powerlevel10k/powerlevel10k.zsh-theme
+# source ~/.p10k.zsh
 [ -f ~/.dir_colors/dircolors ] && eval `dircolors ~/.dir_colors/dircolors`
 
 # PATH THIS SHOULD BE DEFAULT BUT THERES A BUG SOMEHOW
@@ -111,3 +112,5 @@ if [[ -n "$(ls -A $ZSH_FUNCS_DIR)" ]]; then
         source $file
     done
 fi
+
+eval "$(starship init zsh)"
