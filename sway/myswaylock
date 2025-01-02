@@ -1,0 +1,45 @@
+#!/bin/sh
+
+alpha='dd'
+background='#282a36'
+selection='#44475a'
+comment='#6272a4'
+
+yellow='#f1fa8c'
+orange='#ffb86c'
+red='#ff5555'
+magenta='#ff79c6'
+blue='#6272a4'
+cyan='#8be9fd'
+green='50fa7b'
+
+swaylock \
+  --daemonize \
+  --inside-ver-color=$selection$alpha \
+  --inside-wrong-color=$selection$alpha \
+  --inside-color=$selection$alpha \
+  --inside-clear-color=$selection$alpha \
+  --ring-ver-color=$green$alpha \
+  --ring-wrong-color=$red$alpha \
+  --ring-ver-color=$green$alpha \
+  --ring-wrong-color=$red$alpha \
+  --ring-clear-color=$orange$alpha \
+  --ring-color=$blue$alpha \
+  --line-uses-ring \
+  --key-hl-color=$magenta$alpha \
+  --bs-hl-color=$orange$alpha \
+  --separator-color=$selection$alpha \
+  --screenshots \
+  --effect-blur=5x5 \
+  --clock \
+  --indicator \
+  --timestr="%H:%M:%S" \
+  --datestr="%a %b %e" \
+  --font="MesloLGS NF Font" \
+  --indicator-radius=150 \
+  --indicator-thickness=10 \
+  --text-color=$blue$alpha \
+  --fade-in=0.25 \
+  --text-ver-color=$green$alpha \
+  --text-clear-color=$orange$alpha \
+

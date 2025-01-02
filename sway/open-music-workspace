@@ -4,10 +4,10 @@
 workspace_name="🎶"
 
 # Check whether workspace exists
-if ! i3-msg -t get_workspaces | jq -e ".[] | select(.name == \"$workspace_name\")" >/dev/null; then
+if ! swaymsg -t get_workspaces | jq -e ".[] | select(.name == \"$workspace_name\")" >/dev/null; then
     # If workspace does not exist, create it
-    i3-msg workspace $workspace_name
+    swaymsg workspace $workspace_name
     firefox --new-window "https://open.spotify.com"
 else 
-    i3-msg workspace $workspace_name
+    swaymsg workspace $workspace_name
 fi

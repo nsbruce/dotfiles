@@ -1,6 +1,6 @@
 configuration {
     font: "MesloLGS NF 14";
-    modi: "drun,run";
+    modi: "drun,calc,ssh,run";
     show-icons: true;
 }
 * {
@@ -41,8 +41,7 @@ window {
     border: 1;
     border-radius: 6;
     padding: 5;
-    /* gnarly - "real" is preferred (https://davatorium.github.io/rofi/guides/Transparency/theme3-transparency/) */
-    transparency: "screenshot";
+    transparency: "real";
 }
 listview {
     scrollbar: false;

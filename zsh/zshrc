@@ -1,5 +1,4 @@
 # keybindings
-
 bindkey "^[[A" history-beginning-search-backward # start typing then up to match history
 bindkey "^[[B" history-beginning-search-forward # start typing then down to match history
 bindkey "^[." insert-last-word # insert last word (alt+.)
@@ -9,12 +8,24 @@ bindkey "^A" end-of-line # ctrl+a to move to end of line (needed twice if tmux p
 bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
 
 # Initialize above settings
-autoload -Uz compinit && compinit
+fpath=(/usr/share/zsh/site-functions $fpath)
+autoload -U compinit && compinit -C
 
 alias ls='ls --color'
 alias ll='ls --color -lah'
 alias l='ls'
 alias la='ls -a'
+
+take () {
+    mkdir -p "$1" && cd "$1"
+}
+alias :q='exit'
+groot() {
+    cd "$(git rev-parse --show-toplevel 2>/dev/null)"
+}
+mine () {
+    sudo chown -R $UID:$GID "$@"
+}
 
 # History
 HISTFILE=~/.zsh_history
@@ -28,22 +39,23 @@ setopt hist_reduce_blanks # remove superfluous blanks before recording
 setopt hist_verify # show command with history expansion to user before running it
 setopt share_history # write to history file immediately
 
+# directory history
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
+setopt PUSHD_IGNORE_DUPS
+alias dirs='dirs -v'
+
 # Autocorrect/complete
 setopt correct
 setopt auto_cd
 
 # Default editor
-EDITOR="nvim"
+export EDITOR="nvim"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
-
-# theme
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-source ~/.p10k.zsh
-[ -f ~/.dir_colors/dircolors ] && eval `dircolors ~/.dir_colors/dircolors`
 
 # ssh
 if [[ -z "$SSH_TTY" ]]; then
@@ -67,7 +79,7 @@ fi
 
 
 # multiplexing
-if test -z "$TMUX"; then
+if [[ -z "$TMUX" && -n "$SSH_TTY" ]]; then
     # if not already inside a tmux session
     # attach to any unused sessions, or start a new session
     session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)
@@ -87,3 +99,5 @@ if [[ -n "$(ls -A $ZSH_FUNCS_DIR)" ]]; then
         source $file
     done
 fi
+
+eval "$(starship init zsh)"

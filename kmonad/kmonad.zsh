@@ -14,16 +14,7 @@ get_best_kbd() {
     fi
 }
 
-kmonad-stop() {
-    sudo systemctl stop kmonad
-}
-
-kmonad-start() {
-    get_best_kbd
-    sudo systemctl start kmonad
-}
-
 kmonad-restart() {
-    kmonad-stop
-    kmonad-start
+    get_best_kbd
+    sudo systemctl restart kmonad.service
 }

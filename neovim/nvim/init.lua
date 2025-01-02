@@ -56,11 +56,9 @@ require('lazy').setup({
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    -- See `:help indent_blankline.txt`c
+    main = 'ibl',
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -92,7 +90,7 @@ require('lazy').setup({
     build = ":TSUpdate",
   },
 
-  {
+  { -- File browser
   'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     dependencies = {
@@ -105,6 +103,14 @@ require('lazy').setup({
     end,
   },
 
+  -- Language server stuff
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+  {'williamboman/mason.nvim'},
+  {'williamboman/mason-lspconfig.nvim'},
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/nvim-cmp'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'L3MON4D3/LuaSnip'},
 })
 
 -- Set highlight on search
@@ -190,5 +196,34 @@ require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
 }
 
+-- Configure indent-blankline
+require('ibl').setup()
+
 -- Add shortcut :w!! for sudawrite
 vim.api.nvim_set_keymap('n', ':w!!', ':SudaWrite', { noremap = true, silent = false })
+
+-- Start up language servers
+local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp_zero.default_setup,
+  },
+})
+
+-- Neotree stick to right not left
+require('neo-tree').setup({
+  window = {
+	  position = "right",
+  },
+})
+
+-- don't use insecure files with gopass
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = "/dev/shm/gopass*",
+  command = "setlocal noswapfile nobackup noundofile shada"
+})
