@@ -1,5 +1,4 @@
 # keybindings
-
 bindkey "^[[A" history-beginning-search-backward # start typing then up to match history
 bindkey "^[[B" history-beginning-search-forward # start typing then down to match history
 bindkey "^[." insert-last-word # insert last word (alt+.)
@@ -10,7 +9,7 @@ bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
 
 # Initialize above settings
 fpath=(/usr/share/zsh/site-functions $fpath)
-autoload -U compinit && compinit
+autoload -U compinit && compinit -C
 
 alias ls='ls --color'
 alias ll='ls --color -lah'
@@ -59,16 +58,11 @@ export EDITOR="nvim"
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
 # theme
-# source ~/.powerlevel10k/powerlevel10k.zsh-theme
-# source ~/.p10k.zsh
 [ -f ~/.dir_colors/dircolors ] && eval `dircolors ~/.dir_colors/dircolors`
 
 # PATH THIS SHOULD BE DEFAULT BUT THERES A BUG SOMEHOW
 # https://bugs.launchpad.net/ubuntu/+source/bash/+bug/1968007
-PATH=$HOME/.local/bin:$PATH
-
-# XDG might need help with snap
-# XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/snapd/desktop
+# PATH=$HOME/.local/bin:$PATH
 
 # ssh
 if [[ -z "$SSH_TTY" ]]; then
