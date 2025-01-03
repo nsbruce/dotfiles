@@ -11,9 +11,12 @@ bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
 fpath=(/usr/share/zsh/site-functions $fpath)
 autoload -U compinit && compinit -C
 
+# gopass autocompletion doesn't work if I use the -C flag above to speed up compinit
+# manually sourcing it makes it work
+source <(gopass completion zsh)
+
 alias ls='ls --color'
 alias ll='ls --color -lah'
-alias l='ls'
 alias la='ls -a'
 
 take () {
