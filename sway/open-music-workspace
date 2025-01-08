@@ -4,10 +4,12 @@
 workspace_name="🎶"
 
 # Check whether workspace exists
-if ! swaymsg -t get_workspaces | jq -e ".[] | select(.name == \"$workspace_name\")" >/dev/null; then
+workspace_exists=$(swaymsg -t get_workspaces | jq -e ".[] | select(.name == \"$workspace_name\")")
+
+if [ -z "$workspace_exists" ]; then
     # If workspace does not exist, create it
     swaymsg workspace $workspace_name
-    firefox --new-window "https://open.spotify.com"
+    swaymsg exec "firefox --new-window 'https://open.spotify.com'"
 else 
     swaymsg workspace $workspace_name
 fi
