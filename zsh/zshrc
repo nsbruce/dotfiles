@@ -60,6 +60,10 @@ export EDITOR="nvim"
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
+# PATH THIS SHOULD BE DEFAULT BUT THERES A BUG SOMEHOW
+# https://bugs.launchpad.net/ubuntu/+source/bash/+bug/1968007
+PATH=$HOME/.local/bin:$PATH
+
 # ssh
 if [[ -z "$SSH_TTY" ]]; then
     # If not in an SSH session

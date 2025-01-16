@@ -3,7 +3,7 @@
 apt-get install -y fzf tmux git zsh
 
 # install and link prompt
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
 ln -s $PWD/starship.toml $HOME/.config/starship.toml
 
 ln -s ${PWD}/zshrc ${HOME}/.zshrc
