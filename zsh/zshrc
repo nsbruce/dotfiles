@@ -13,7 +13,9 @@ autoload -U compinit && compinit -C
 
 # gopass autocompletion doesn't work if I use the -C flag above to speed up compinit
 # manually sourcing it makes it work
-source <(gopass completion zsh)
+if type "$gopass" > /dev/null; then
+    source <(gopass completion zsh)
+fi
 
 alias ls='ls --color'
 alias ll='ls --color -lah'
