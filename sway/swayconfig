@@ -150,7 +150,7 @@ exec kanshi
     bindsym $mod+7 workspace number $ws7
     bindsym $mod+8 workspace number $ws8
     bindsym $mod+9 workspace number $ws9
-    bindsym $mod+0 exec --no-startup-id open-music-workspace 
+    bindsym $mod+0 exec --no-startup-id $HOME/.local/bin/open-music-workspace 
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number $ws1
