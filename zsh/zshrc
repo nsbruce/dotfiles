@@ -13,7 +13,7 @@ autoload -U compinit && compinit -C
 
 # gopass autocompletion doesn't work if I use the -C flag above to speed up compinit
 # manually sourcing it makes it work
-if type "$gopass" > /dev/null; then
+if type gopass > /dev/null 2>&1; then
     source <(gopass completion zsh)
 fi
 
