@@ -19,3 +19,9 @@ rm -rf darkman
 mkdir -p $HOME/.config/darkman
 ln -s $PWD/darkmanconfig.yaml $HOME/.config/darkman/config.yaml
 systemctl --user enable --now darkman.service
+
+# lineselect
+cargo install lineselect
+
+# tbmk
+echo "Go to tbmk github and get latest release. Then put binary in ~/.local/bin along with the config.yaml file, but change the datadir in the yaml to ~/.local/w"

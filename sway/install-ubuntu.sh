@@ -1,20 +1,21 @@
 #!/bin/bash
 
 ## deps
-apt-get install -y sway slurp grim brightnessctl wev
+apt-get install -y sway slurp grim brightnessctl wev wl-clipboard swayidle
 
 # for brightnessctl to work
 usermod -aG video $USER
 
 ## deps for swaylock-effects
-apt-get install -y libxkbcommon-dev meson wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam-cracklib
+apt-get install -y libxkbcommon-dev meson ninja-build libiniparser-dev wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam0g-dev
 
 git clone https://github.com/mortie/swaylock-effects
 cd swaylock-effects
 meson build
 ninja -C build
-sudo ninja -C build install
-sudo chmod a+s /usr/local/bin/swaylock
+ninja -C build install
+chmod a+s /usr/local/bin/swaylock
+cd -
 rm -r swaylock-effects
 
 mkdir -p $HOME/.config/sway
@@ -24,7 +25,7 @@ ln -s $PWD/swayconfig $HOME/.config/sway/config
 ln -s $PWD/myswaylock $HOME/.local/bin/myswaylock
 
 ## deps for rofi (wayland fork)
-apt-get install -y libpango1.0-dev libgdk-pixbuf-2.0-dev flex bison
+apt-get install -y libpango1.0-dev flex bison # libgdk-pixbuf-2.0-dev
 git clone https://github.com/lbonn/rofi
 cd rofi
 meson setup build
@@ -50,9 +51,9 @@ rm -r rofi-calc
 mkdir -p $HOME/.config/rofi
 ln -s $PWD/rofi-config.rasi $HOME/.config/rofi/config.rasi
 
-sudo apt-get install -y i3status
-mkdir -p ${HOME}/.config/i3status
-ln -s ${PWD}/i3statusconfig ${HOME}/.config/i3status/config
+# apt-get install -y i3status
+# mkdir -p ${HOME}/.config/i3status
+# ln -s ${PWD}/i3statusconfig ${HOME}/.config/i3status/config
 
 # notifications via mako
 apt-get install -y jq gperf libnotify-bin
@@ -97,7 +98,7 @@ rm -r kanshi
 mkdir -p $HOME/.config/kanshi
 
 # waybar is just a better status bar than is stock with sway
-sudo apt install \
+sudo apt install -y \
   clang-tidy \
   gobject-introspection \
   libdbusmenu-gtk3-dev \
@@ -130,4 +131,4 @@ rm -r Waybar
 ln -s $PWD/waybar $HOME/.config/waybar
 # misc scripts
 ln -s $PWD/open-music-workspace $HOME/.local/bin/open-music-workspace
-ls -s $PWD/sway-alias.zsh $ZSH_FUNCS_DIR/sway-alias.zsh
+ln -s $PWD/sway-alias.zsh $ZSH_FUNCS_DIR/sway-alias.zsh

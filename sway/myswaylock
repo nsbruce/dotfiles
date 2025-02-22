@@ -35,7 +35,7 @@ swaylock \
   --indicator \
   --timestr="%H:%M:%S" \
   --datestr="%a %b %e" \
-  --font="MesloLGS NF Font" \
+  --font="Atkinson Hyperlegible Mono" \
   --indicator-radius=150 \
   --indicator-thickness=10 \
   --text-color=$blue$alpha \
@@ -43,3 +43,4 @@ swaylock \
   --text-ver-color=$green$alpha \
   --text-clear-color=$orange$alpha \
 
+  # --font="MesloLGS NF Font" \

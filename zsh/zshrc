@@ -55,7 +55,7 @@ setopt correct
 setopt auto_cd
 
 # Default editor
-export EDITOR="nvim"
+export EDITOR="hx"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

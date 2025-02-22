@@ -14,7 +14,8 @@ floating_modifier $mod
 
 # Font for window titles and the bar unless a different font is indicated in the bar {}
 # block later in this config file
-font pango:MesloLGS NF Regular 12
+# font pango:MesloLGS NF Regular 12
+font pango: Atkinson Hypelegible Mono 12
 
 # Your preferred terminal emulator
 set $term ghostty
@@ -51,7 +52,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/nsbruce/Pictures/wallpapers/DSCF6578.jpg fill
+output * bg /home/brucen/Pictures/wallpapers/DSCF6578.jpg fill
 
 ### Idle and lock configuration
 

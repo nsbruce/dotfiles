@@ -2,7 +2,8 @@
 window-decoration = false
 
 # all fonts
-font-family = MesloLGS NF
+# font-family = MesloLGS NF
+font-family = Atkinson Hyperlegible Mono
 
 # theme from https://github.com/MohamedElashri/ghostty-dracula/blob/main/dracula.conf
 palette = 0=#21222c
