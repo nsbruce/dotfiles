@@ -11,9 +11,9 @@
         "enable-bar-scroll": true
     },
     "sway/scratchpad": {
-        "format": "{icon} {count}",
+        "format": " 🙈 ({count})",
         "show-empty": false,
-        "format-icons": ["", ""],
+        // "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -26,7 +26,7 @@
         "tooltip": false
     },
     "network": {
-        "format-wifi": "🛜 {ipaddr} ",
+        "format-wifi": "📡 {ipaddr} ",
         "format-ethernet": "{icon} {ipaddr} ",
         "tooltip-format-wifi": "{essid}\n{signaldBm}\n{bandwidthTotalBits}",
         "tooltip-format-ethernet": "{bandwidthTotalBits}",
@@ -41,18 +41,16 @@
             "warning": 40,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": "🔌 {capacity}%",
-        "format-icons": ["", "", "", "", ""],
+        "format": "🔋 {capacity}%",
+        "format-charging": "🔌 {capacity}%",
         "tooltip": false
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon}  {volume}% {format_source}",
-        "format-muted": "🔇 {format_source}",
+        "format-muted": "🔇 {volume}% {format_source}",
         "format-source": "🎤 {volume}%",
-        "format-source-muted": "",
+        "format-source-muted": "🙊 {volume}%",
         "format-icons": {
             "default": ["🔈","🔉","🔊"]
         },
