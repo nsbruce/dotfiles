@@ -1,10 +1,10 @@
 configuration {
-    font: "MesloLGS NF 14";
-    modi: "drun,calc,ssh,run";
+    font: "Atkinson Hyperlegible Mono 14";
+    modi: "drun,calc,file-browser-extended,search:~/.config/rofi/rofi-web-search.py";
     show-icons: true;
+    sidebar-mode: true;
 }
 * {
-    //font: "MesloLGS NF 14";
     font: "Atkinson Hyperlegible Mono 14";
 
     foreground: #f8f8f2;
