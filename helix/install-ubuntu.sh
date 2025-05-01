@@ -15,7 +15,7 @@ mkdir -p $HOME/.config/dprint
 ln -s $PWD/dprint.json $HOME/.config/dprint/dprint.json
 
 # bash lsp and linter
-apt install -y --no-intsall-recommends shellcheck
+apt install -y --no-install-recommends shellcheck
 snap install bash-language-server --classic
 
 # markdown lsp
