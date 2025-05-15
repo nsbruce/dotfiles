@@ -39,3 +39,8 @@ get_best_kbd
 ln -s ${PWD}/kmonad.service /etc/systemd/system/kmonad.service
 systemctl enable kmonad.service
 systemctl start kmonad
+
+echo 'To allow passwordless restarting of kmonad (by kanshi, for example), add the following line to a new file at /etc/sudeoers.d/kmonad'
+echo
+echo "${USER} ALL=(ALL) NOPASSWD: /bin/systemctl restart kmonad.service"
+echo

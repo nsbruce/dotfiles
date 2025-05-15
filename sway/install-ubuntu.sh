@@ -48,6 +48,15 @@ make install
 cd ../..
 rm -r rofi-calc
 
+## rofi-file-browser
+git clone https://github.com/marvinkreis/rofi-file-browser-extended.git
+cd rofi-file-browser-extended
+cmake .
+make
+make install
+cd -
+rm -r rofi-file-browser-extended
+
 mkdir -p $HOME/.config/rofi
 ln -s $PWD/rofi-config.rasi $HOME/.config/rofi/config.rasi
 
