@@ -72,6 +72,11 @@ bindsym $mod+l exec $HOME/.local/bin/myswaylock
 # Starts kanshi which checks for new monitor configurations
 exec kanshi
 
+# Set trackpad to tap working
+input "type:touchpad" {
+    tap enabled
+}
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
