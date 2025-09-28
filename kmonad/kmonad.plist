@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ca.nicholasbruce.kmonad</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/sudo</string>
+      <string>/Users/nsbruce/.local/bin/kmonad</string>
+      <string>/Users/nsbruce/dotfiles/kmonad/apple.kbd</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true />
+    <key>StandardOutPath</key>
+    <string>/tmp/kmonad.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/kmonad.stderr</string>
+  </dict>
+</plist>
