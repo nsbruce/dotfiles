@@ -88,15 +88,14 @@ fi
 
 
 # multiplexing
-if [[ -z "$TMUX" && -n "$SSH_TTY" ]]; then
-    # if not already inside a tmux session
-    # attach to any unused sessions, or start a new session
-    session=$(tmux ls | grep -v attached | head -1 | cut -f1 -d:)
-    if [[ $session == "" ]]; then
-        # the exit meant if we type exit in tmux, it would exit the terminal
-        tmux new-session && exit
+if [[ -z "$ZELLIJ" && -n "$SSH_TTY" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
     else
-        tmux attach -t $session && exit
+        zellij
+    fi
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
     fi
 fi
 
