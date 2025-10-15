@@ -1,13 +1,90 @@
 #!/bin/bash
 
-## deps
-apt-get install -y sway slurp grim brightnessctl wev wl-clipboard swayidle
+## deps to build swayfx
+apt-get install meson wayland-protocols libpcre2-dev libjson-c-dev libpango-1.0-0 libcairo2-dev
+
+# wayland itself
+git clone https://gitlab.freedesktop.org/wayland/wayland
+cd wayland
+meson setup build -Ddocumentation=false
+ninja -C build install
+cd - 
+rm -rf wayland
+
+# for wlroots, need newer xkbcommon than is available on apt
+git clone https://github.com/xkbcommon/libxkbcommon.git
+cd libxkbcommon
+meson setup build -Denable-x11=false -Dxkb-config-root=/usr/share/X11/xkb -Dx-locale-root=/usr/share/X11/locale
+meson compile -C build
+ninja -C build install
+cd -
+rm -rf libxkbcommon
+
+# for wlroots, need newer pixman than is available on apt
+git clone https://gitlab.freedesktop.org/pixman/pixman.git
+cd pixman
+meson setup build
+ninja -C build install
+cd -
+rm -rf pixman
+
+# for wlroots, need newer wayland-protocols than is available on apt
+git clone https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+cd wayland-protocols
+meson setup build
+ninja -C build install
+cd -
+rm -rf wayland-protocols
+
+# for swayfx, need newer wlroots than is available on apt
+git clone --branch 0.19.1 https://gitlab.freedesktop.org/wlroots/wlroots.git
+cd wlroots
+meson setup build
+ninja -C build install
+cd -
+rm -rf wlroots
+
+# wlr replacement, scenefx
+apt-get install --assume-yes libgbm-dev
+git clone https://github.com/wlrfx/scenefx.git
+cd scenefx
+meson setup build
+ninja -C build
+ninja -C build install
+cd -
+rm -rf scenefx
+
+# for swayfx, need newer libinput that is available on apt
+git clone https://gitlab.freedesktop.org/libinput/libinput
+cd libinput
+meson setup --prefix=/usr build
+ninja -C build
+ninja -C build install
+cd -
+rm -rf libinput
+
+apt-get install --assume-yes libjson-c-dev
+git clone git@github.com:WillPower3309/swayfx.git
+cd swayfx
+# mkdir -p subprojects
+# cd subprojects
+# git clone https://github.com/wlrfx/scenefx.git
+# # git clone --branch 0.19.1 https://gitlab.freedesktop.org/wlroots/wlroots.git
+# cd -
+meson setup build
+ninja -C build
+ninja -C build install
+cd -
+rm -rf swayfx
+
+# useful stuff
+apt-get install --assume-yes slurp grim brightnessctl wev wl-clipboard swayidle
 
 # for brightnessctl to work
-usermod -aG video $USER
+usermod --append --groups video $USER
 
 ## deps for swaylock-effects
-apt-get install -y libxkbcommon-dev meson ninja-build libiniparser-dev wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam0g-dev
+apt-get install --assume-yes libxkbcommon-dev meson ninja-build libiniparser-dev wayland-protocols cmake make libwayland-dev libcairo2-dev scdoc libpam0g-dev
 
 git clone https://github.com/mortie/swaylock-effects
 cd swaylock-effects
