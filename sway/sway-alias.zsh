@@ -1,1 +1,1 @@
-alias sway="sway > /var/log/sway.log 2>&1"
+alias sway="/usr/local/bin/sway --unsupported-gpu > /var/log/sway.log 2>&1"
