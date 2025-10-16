@@ -241,6 +241,7 @@ input "type:touchpad" {
 default_border pixel 3
 default_floating_border pixel 3
 hide_edge_borders none
+corner_radius 32
 
 # Dracula colors (https://github.com/dracula/i3)
 # class                 border  bground text    indicator child_border

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## add /usr/local to ldconfig
+echo "/usr/local/lib/x86_64-linux-gnu" | sudo tee /etc/ld.so.conf.d/local.conf
+sudo ldconfig
+
 ## deps to build swayfx
 apt-get install meson wayland-protocols libpcre2-dev libjson-c-dev libpango-1.0-0 libcairo2-dev
 
@@ -37,9 +41,11 @@ cd -
 rm -rf wayland-protocols
 
 # for swayfx, need newer wlroots than is available on apt
+apt install --assume-yes libdisplay-info-dev
 git clone --branch 0.19.1 https://gitlab.freedesktop.org/wlroots/wlroots.git
 cd wlroots
-meson setup build
+meson setup build --prefix=/usr/local --Dbackends=drm,libinput,x11
+ninja -C build
 ninja -C build install
 cd -
 rm -rf wlroots
