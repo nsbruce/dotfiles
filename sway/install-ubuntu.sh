@@ -41,10 +41,10 @@ cd -
 rm -rf wayland-protocols
 
 # for swayfx, need newer wlroots than is available on apt
-apt install --assume-yes libdisplay-info-dev
+apt install --assume-yes libdisplay-info-dev libvulkan-dev libliftoff-dev
 git clone --branch 0.19.1 https://gitlab.freedesktop.org/wlroots/wlroots.git
 cd wlroots
-meson setup build --prefix=/usr/local --Dbackends=drm,libinput,x11
+meson setup build --prefix=/usr/local -Dbackends=drm,libinput,x11
 ninja -C build
 ninja -C build install
 cd -
