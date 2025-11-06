@@ -1,0 +1,34 @@
+#!/bin/bash
+
+SOUND_FILE="/usr/share/sounds/freedesktop/stereo/service-login.oga"
+REMINDER_INTERVAL=1200  # 20 minutes in seconds
+IDLE_THRESHOLD=300      # consider idle after 5 minutes
+
+# PID of the reminder loop
+REMINDER_PID=""
+
+# Stop the reminder loop
+stop_reminders() {
+    if [ -n "$REMINDER_PID" ] && kill -0 "$REMINDER_PID" 2>/dev/null; then
+        kill "$REMINDER_PID"
+    fi
+    REMINDER_PID=""
+}
+
+# Start continuous reminders
+start_reminders() {
+    stop_reminders
+    (
+        while true; do
+            sleep $REMINDER_INTERVAL
+            notify-send "Posture Check!" "Sit up straight & roll your neck"
+            paplay "$SOUND_FILE"
+        done
+    ) &
+    REMINDER_PID=$!
+}
+
+# Listen to swayidle events
+swayidle -w \
+    timeout $IDLE_THRESHOLD 'stop_reminders' \
+    resume 'start_reminders'
