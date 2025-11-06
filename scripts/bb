@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# If stdout is a TTY, redirect all future stdout to /dev/null
+if test -t 1; then
+  exec 1>/dev/null
+fi
+
+# If the stderr is a terminal, redirect all future stderr to /dev/null
+if test -t 2; then
+  exec 2>/dev/null
+fi
+
+"$@" &

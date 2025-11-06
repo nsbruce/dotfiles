@@ -3,4 +3,4 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-exec batcat "$@"
+paplay /usr/share/sounds/freedesktop/stereo/complete.oga
