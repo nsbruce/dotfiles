@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+SOUND_FILE="/usr/share/sounds/freedesktop/stereo/service-login.oga"
+REMINDER_INTERVAL=5  # how frequently in seconds
+PID_FILE="/run/usr/$UID/.posture_reminder.pid"
+
+# Kill old loop if running
+if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    kill "$(cat "$PID_FILE")"
+fi
+
+# Start loop
+(
+    while true; do
+        notify-send "Posture Check!" "Sit up straight & roll your neck"
+        paplay "$SOUND_FILE"
+        sleep $REMINDER_INTERVAL
+    done
+) &
+echo $! > "$PID_FILE"

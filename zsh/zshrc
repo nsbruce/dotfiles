@@ -9,7 +9,7 @@ bindkey "^O" beginning-of-line # ctrl+e to move to beginning of line
 
 # Initialize above settings
 fpath=(/usr/share/zsh/site-functions $fpath)
-autoload -U compinit && compinit -C
+compinit -i
 
 # gopass autocompletion doesn't work if I use the -C flag above to speed up compinit
 # manually sourcing it makes it work
