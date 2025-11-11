@@ -1,6 +1,6 @@
 configuration {
     font: "Atkinson Hyperlegible Mono 14";
-    modi: "drun,calc,file-browser-extended,search:~/.config/rofi/rofi-web-search.py";
+    modi: "drun,calc,file-browser-extended,search:~/.config/rofi/web-search.py";
     show-icons: true;
     sidebar-mode: true;
 }

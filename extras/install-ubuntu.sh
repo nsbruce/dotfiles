@@ -32,3 +32,23 @@ apt update
 apt install tlp tlp-rdw
 systemctl enable tlp.service
 systemctl start tlp.service
+
+# libscfg is a kanshi dependency
+git clone https://git.sr.ht/~emersion/libscfg
+cd libscfg
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r libscfg
+
+# kanshi does automatic display switcheroo-ing
+git clone https://git.sr.ht/~emersion/kanshi
+cd kanshi
+meson build
+ninja -C build
+ninja -C build install
+cd -
+rm -r kanshi
+
+mkdir -p $HOME/.config/kanshi
