@@ -1,48 +1,55 @@
 @import url("./colors.css");
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 0px;
     /* font-family: Meslo LGS NF; */
     font-family: Atkinson Hyperlegible Mono;
     font-size: 12pt;
-    min-height: 0;
+    min-height: 0px;
 }
 window#waybar {
     opacity: 1;
-    background: @background;
+    background: rgba(0,0,0,0);
     color: @foreground;
 }
 tooltip {
     background: @background;
     border: 1px solid @purple;
-    border-radius: 10px;
+    border-radius: 12px;
     opacity: 0.95;
 }
 tooltip label {
     color: @foreground;
 }
 #workspaces button {
-    padding: 0 5px;
+    padding: 5px 5px;
+    margin: 3px;
     background: @background;
     color: @foreground;
+    border-radius: 12px;
 }
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-image: linear-gradient(0deg, @selection, @background);
+    background-image: linear-gradient(0deg, @comment, @background);
 }
 #workspaces button.urgent {
     background: @red;
 }
 #workspaces button.visible {
-    background: @selection;
+    /* background: @selection; */
+    color: @purple;
 }
 .modules-center {
     margin-right: 20px;
+    opacity: 0;
 }
 #idle_inhibitor, #network, #battery, #pulseaudio, #clock.utc, #memory, #disk, #clock.local {
-    padding: 0 4px;
-    border-right: 2px solid @selection;
+    padding: 4px 4px;
+    margin: 3px;
+    border-radius: 12px;
+    /* border-right: 2px solid @selection; */
+    background: @background;
 }
 #network {
     color: @green;
@@ -51,24 +58,29 @@ tooltip label {
     color: @orange;
 }
 #network.disconnected {
-    color: @red;
+    color: @background;
+    background: @red;
 }
 #network.disabled {
     color: @yellow;
 }
 #battery.warning {
-    color: @orange;
+    background: @orange;
+    color: @background;
 }
 #battery.critical {
-    color: @red;
+    background: @red;
+    color: @background;
 }
 #tray {
     margin-right: 5px;
     margin-left: 5px;
 }
 #pulseaudio.source-muted {
-    color: @red;
+    background: @red;
+    color: @background;
 }
 #pulseaudio.muted {
-    color: @red;
+    background: @red;
+    color: @background;
 }
