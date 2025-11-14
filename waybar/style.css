@@ -15,7 +15,7 @@ window#waybar {
 tooltip {
     background: @background;
     border: 1px solid @purple;
-    border-radius: 12px;
+    border-radius: 8px;
     opacity: 0.95;
 }
 tooltip label {
@@ -28,6 +28,11 @@ tooltip label {
     color: @foreground;
     border-radius: 12px;
 }
+#workspaces button:active, #workspaces button:focus {
+    color: @purple;
+    background: @purple;
+    border: 3px solid @purple;
+}
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
@@ -35,10 +40,6 @@ tooltip label {
 }
 #workspaces button.urgent {
     background: @red;
-}
-#workspaces button.visible {
-    /* background: @selection; */
-    color: @purple;
 }
 .modules-center {
     margin-right: 20px;
