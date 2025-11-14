@@ -2,15 +2,15 @@
 * {
     border: none;
     border-radius: 0px;
-    /* font-family: Meslo LGS NF; */
     font-family: Atkinson Hyperlegible Mono;
     font-size: 12pt;
     min-height: 0px;
 }
 window#waybar {
-    opacity: 1;
-    background: rgba(0,0,0,0);
-    color: @foreground;
+    background: rgba(40,42,54,0.6);
+}
+window#waybar.hidden {
+    opacity: 0.2;
 }
 tooltip {
     background: @background;
@@ -21,67 +21,92 @@ tooltip {
 tooltip label {
     color: @foreground;
 }
+#workspaces {
+    background: @pink;
+    border-radius: 10px;
+    margin: 6px 5px;
+    padding: 0px 6px;
+}
 #workspaces button {
-    padding: 5px 5px;
-    margin: 3px;
-    background: @background;
-    color: @foreground;
-    border-radius: 12px;
-}
-#workspaces button:active, #workspaces button:focus {
-    color: @purple;
-    background: @purple;
-    border: 3px solid @purple;
-}
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background-image: linear-gradient(0deg, @comment, @background);
-}
-#workspaces button.urgent {
-    background: @red;
-}
-.modules-center {
-    margin-right: 20px;
-    opacity: 0;
-}
-#idle_inhibitor, #network, #battery, #pulseaudio, #clock.utc, #memory, #disk, #clock.local {
+    color: @background;
+    background: @pink;
     padding: 4px 4px;
-    margin: 3px;
-    border-radius: 12px;
-    /* border-right: 2px solid @selection; */
-    background: @background;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
-#network {
+#workspaces button.occupied {
     color: @green;
 }
-#network.linked {
-    color: @orange;
+#workspaces button.active {
+    background: @green;
 }
-#network.disconnected {
-    color: @background;
-    background: @red;
-}
-#network.disabled {
-    color: @yellow;
-}
-#battery.warning {
-    background: @orange;
-    color: @background;
-}
-#battery.critical {
-    background: @red;
-    color: @background;
+#workspaces button:hover {
+    background: @yellow;
 }
 #tray {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+/* all center and right collections */
+#idle_inhibitor, #network, #battery, #pulseaudio, #clock.utc, #memory, #disk, #clock.local {
+    color: @background;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: none;
+}
+
+/* ones on the left edge of collections */
+#idle_inhibitor, #network {
+    margin-left: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* ones on the right edge of collections */
+#pulseaudio, #clock.utc {
+    margin-right: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* centre */
+#idle_inhibitor {
+    background: @cyan;
+}
+#clock.local {
+    background: @green;
+}
+#pulseaudio {
+    background: @purple;
+}
 #pulseaudio.source-muted {
     background: @red;
-    color: @background;
 }
 #pulseaudio.muted {
     background: @red;
-    color: @background;
+}
+
+/* right hand side */
+#network {
+    background: @pink;
+}
+#battery {
+    background: @cyan;
+}
+#battery.warning {
+    background: @orange;
+}
+#battery.critical {
+    background: @red;
+}
+#memory {
+    background: @yellow;
+}
+#disk {
+    background: @green;
+}
+#clock.utc {
+    background: @purple;
 }
