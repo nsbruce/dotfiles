@@ -1,4 +1,4 @@
-apt-get install --assume-yes clang libudev-dev libgbm-dev libxkbcommon-dev libegl1-mesa-dev libwayland-dev libinput-dev libdbus-1-dev libsystemd-dev libseat-dev libpipewire-0.3-dev libpango1.0-dev libdisplay-info-dev
+apt-get install --assume-yes --no-install-recommends clang libudev-dev libgbm-dev libxkbcommon-dev libegl1-mesa-dev libwayland-dev libinput-dev libdbus-1-dev libsystemd-dev libseat-dev libpipewire-0.3-dev libpango1.0-dev libdisplay-info-dev xdg-desktop-portal-gtk xdg-desktop-portal-gnome gnome-keyring
 
 # xwayland-satellite is a dep since I want xwayland support
 git clone https://github.com/Supreeeme/xwayland-satellite.git
