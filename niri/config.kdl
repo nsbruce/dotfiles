@@ -3,6 +3,8 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
+spawn-sh-at-startup "exec swayidle -w timeout 300 'hyprlock' timeout 600 \"swaymsg 'output * dpms off'\" resume \"swaymsg 'output * dpms on'\" before-sleep 'hyprlock'"
+
 input {
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
