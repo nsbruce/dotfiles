@@ -1,21 +1,18 @@
 {
-    "height": 30, // Waybar height (default is auto height)
+    "height": 35, // Waybar height (default is auto height)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/scratchpad"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "network", "battery", "pulseaudio", "clock#utc", "memory", "disk", "clock#local", "tray"],
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["idle_inhibitor", "clock#local", "pulseaudio"],
+    "modules-right": ["tray", "network", "battery", "memory", "disk", "clock#utc"],
 
     // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": false,
-        "enable-bar-scroll": true
+    "niri/workspaces": {
+        "all-outputs": false,
+        "disable-click": false,
     },
-    "sway/scratchpad": {
-        "format": " 🙈 ({count})",
-        "show-empty": false,
-        // "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -26,14 +23,16 @@
         "tooltip": false
     },
     "network": {
-        "format-wifi": "📡 {ipaddr} ",
+        "format-wifi": "{icon} {essid} ",
         "format-ethernet": "{icon} {ipaddr} ",
-        "tooltip-format-wifi": "{essid}\n{signaldBm}\n{bandwidthTotalBits}",
+        "tooltip-format-wifi": "{ipaddr}\n{signaldBm} dBm\n{bandwidthTotalBits}",
         "tooltip-format-ethernet": "{bandwidthTotalBits}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "⚠ No network",
+        "format-disconnected": "{icon} No network",
         "format-icons": {
-            "ethernet": "🌐"
+            "ethernet": "🌐",
+            "disconnected": "❌",
+            "wifi": "📡"
         }
     },
     "battery": {
@@ -47,7 +46,7 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon}  {volume}% {format_source}",
+        "format-bluetooth": "📻 {volume}% {format_source}",
         "format-muted": "🔇 {volume}% {format_source}",
         "format-source": "🎤 {volume}%",
         "format-source-muted": "🙊 {volume}%",
@@ -73,10 +72,6 @@
     "clock#local": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%H:%M}"
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
     }
 }
 
