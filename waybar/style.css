@@ -32,6 +32,7 @@ tooltip label {
     background: @pink;
     padding: 4px 4px;
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: 10px;
 }
 #workspaces button.occupied {
     color: @green;
@@ -73,10 +74,10 @@ tooltip label {
 
 /* centre */
 #idle_inhibitor {
-    background: @cyan;
+    background: @yellow;
 }
 #clock.local {
-    background: @green;
+    background: @cyan;
 }
 #pulseaudio {
     background: @purple;
@@ -90,10 +91,10 @@ tooltip label {
 
 /* right hand side */
 #network {
-    background: @pink;
+    background: @yellow;
 }
 #battery {
-    background: @cyan;
+    background: @purple;
 }
 #battery.warning {
     background: @orange;
@@ -102,7 +103,7 @@ tooltip label {
     background: @red;
 }
 #memory {
-    background: @yellow;
+    background: @pink;
 }
 #disk {
     background: @green;

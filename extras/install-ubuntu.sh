@@ -52,3 +52,6 @@ cd -
 rm -r kanshi
 
 mkdir -p $HOME/.config/kanshi
+
+# wpaperd handles rotating wallpapers
+cargo install wpaperd

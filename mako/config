@@ -1,10 +1,9 @@
 background-color=#44475a
 text-color=#F8F8F2
 border-color=#6272a4
-# font=MesloLGS NF 10
 font=Atkinson Hyperlegible Mono 10
 border-size=4
-border-radius=4
+border-radius=10
 default-timeout=20000
 
 [urgency=low]
