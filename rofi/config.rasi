@@ -7,9 +7,20 @@ configuration {
 * {
     font: "Atkinson Hyperlegible Mono 14";
 
+    background: #282a36;
+    selection: #44475a;
     foreground: #f8f8f2;
+    comment: #6272a4;
+    cyan: #8be9fd;
+    green: #50fa7b;
+    orange: #ffb86c;
+    pink: #ff79c6;
+    purple: #bd93f9;
+    red: #ff5555;
+    yellow: #f1fa8c;
+    
     normal-foreground: @foreground;
-    selected-normal-foreground: @foreground;
+    selected-normal-foreground: @background;
     selected-urgent-foreground: @foreground;
     selected-active-foreground: @foreground;
     urgent-foreground: @foreground;
@@ -18,28 +29,27 @@ configuration {
     alternate-urgent-foreground: @foreground;
     alternate-active-foreground: @foreground;
 
-    background: #282a36;
     normal-background: @background;
     alternate-normal-background: @background;
-    active-background: #6272a4;
+    active-background: @cyan;
     selected-normal-background: @active-background;
     selected-background: @active-background;
     selected-active-background: @active-background;
     alternate-active-background: @active-background;
-    urgent-background: #ff5555;
+    urgent-background: @red;
     alternate-urgent-background: @urgent-background;
     selected-urgent-background: @urgent-background;
     background-color: @background;
 
     separatorcolor: @active-background;
-    bordercolor: @active-background;
+    bordercolor: @yellow;
     border-color: @bordercolor;
 
     spacing: 2;
 }
 
 window {
-    border: 1;
+    border: 4;
     border-radius: 6;
     padding: 5;
     transparency: "real";
