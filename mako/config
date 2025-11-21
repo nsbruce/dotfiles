@@ -1,16 +1,19 @@
-background-color=#44475a
-text-color=#F8F8F2
-border-color=#6272a4
+background-color=#3B4252
+text-color=#E5E9F0
+border-color=#8FBCBB
 font=Atkinson Hyperlegible Mono 10
 border-size=4
 border-radius=10
 default-timeout=20000
 
 [urgency=low]
-border-color=#6272a4
+border-color=#4C566A
 
 [urgency=normal]
-border-color=#f1fa8c
+border-color=#8FBCBB
 
 [urgency=high]
-border-color=#ff5555
+border-color=#BF616A
+
+[urgency=critical]
+border-color=#BF616A

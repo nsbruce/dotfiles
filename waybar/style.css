@@ -1,4 +1,5 @@
 @import url("./colors.css");
+
 * {
     border: none;
     border-radius: 0px;
@@ -6,27 +7,33 @@
     font-size: 12pt;
     min-height: 0px;
 }
+
 window#waybar {
-    background: rgba(40,42,54,0.6);
+    background: rgba(59, 66, 82, 0.6);
 }
+
 window#waybar.hidden {
     opacity: 0.2;
 }
+
 tooltip {
     background: @background;
     border: 1px solid @purple;
     border-radius: 8px;
     opacity: 0.95;
 }
+
 tooltip label {
     color: @foreground;
 }
+
 #workspaces {
-    background: @pink;
+    background: @purple;
     border-radius: 10px;
     margin: 6px 5px;
     padding: 0px 6px;
 }
+
 #workspaces button {
     color: @background;
     background: @pink;
@@ -34,22 +41,33 @@ tooltip label {
     transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
     border-radius: 10px;
 }
+
 #workspaces button.occupied {
     color: @green;
 }
+
 #workspaces button.active {
     background: @green;
 }
+
 #workspaces button:hover {
     background: @yellow;
 }
+
 #tray {
     margin-right: 5px;
     margin-left: 5px;
 }
 
 /* all center and right collections */
-#idle_inhibitor, #network, #battery, #pulseaudio, #clock.utc, #memory, #disk, #clock.local {
+#idle_inhibitor,
+#network,
+#battery,
+#pulseaudio,
+#clock.utc,
+#memory,
+#disk,
+#clock.local {
     color: @background;
     margin-top: 6px;
     margin-bottom: 6px;
@@ -59,14 +77,16 @@ tooltip label {
 }
 
 /* ones on the left edge of collections */
-#idle_inhibitor, #network {
+#idle_inhibitor,
+#network {
     margin-left: 5px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
 /* ones on the right edge of collections */
-#pulseaudio, #clock.utc {
+#pulseaudio,
+#clock.utc {
     margin-right: 5px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -76,15 +96,19 @@ tooltip label {
 #idle_inhibitor {
     background: @yellow;
 }
+
 #clock.local {
-    background: @cyan;
+    background: @blue;
 }
+
 #pulseaudio {
     background: @purple;
 }
+
 #pulseaudio.source-muted {
     background: @red;
 }
+
 #pulseaudio.muted {
     background: @red;
 }
@@ -93,21 +117,27 @@ tooltip label {
 #network {
     background: @yellow;
 }
+
 #battery {
-    background: @purple;
+    background: @blue;
 }
+
 #battery.warning {
-    background: @orange;
+    background: @yellow;
 }
+
 #battery.critical {
     background: @red;
 }
+
 #memory {
-    background: @pink;
+    background: @purple;
 }
+
 #disk {
     background: @green;
 }
+
 #clock.utc {
     background: @purple;
 }
