@@ -4,7 +4,7 @@ environment {
 }
 
 // This uses swayidle to run hyperlock after 5 minutes, and turn off the screen in 10
-spawn-sh-at-startup "exec swayidle -w timeout 300 'hyprlock' timeout 600 \"swaymsg 'output * dpms off'\" resume \"swaymsg 'output * dpms on'\" before-sleep 'hyprlock'"
+// spawn-sh-at-startup "swayidle -w timeout 300 'hyprlock' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'hyprlock'"
 // One can set and configure specific outputs (monitors) inside an `outputs {}` object, but I use `kanshi`
 spawn-at-startup "kanshi"
 // sets a wallpaper
@@ -175,7 +175,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

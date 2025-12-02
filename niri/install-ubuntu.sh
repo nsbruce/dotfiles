@@ -11,8 +11,17 @@ rm -rf xwayland-satellite
 git clone https://github.com/YaLTeR/niri.git
 cd niri
 cargo install --path . --locked
+mv resources/niri-session $HOME/.local/bin/
+mv resources/niri.desktop /usr/local/share/wayland-sessions/
+mv niri.service /etc/systemd/user/
+echo 'You must update the path in /etc/systemd/user/niri.service to $(which niri)'
+mv niri-shutdown.target /etc/systemd/user/
 cd -
 rm -rf niri
 
 mkdir --parents $HOME/.config/niri
 ln -s $PWD/config.kdl $HOME/.config/niri/config.kdl
+
+cp swayidle.service ~/.config/systemd/user/
+systemctl --userdaemon-reload
+systemctl --user add-wants niri.service swayidle.service

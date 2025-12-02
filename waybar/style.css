@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-    background: rgba(59, 66, 82, 0.6);
+    background: rgba(59, 66, 82, 0.9);
 }
 
 window#waybar.hidden {
