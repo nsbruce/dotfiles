@@ -89,7 +89,7 @@ fi
 
 # multiplexing
 if [[ -z "$ZELLIJ" && -n "$SSH_TTY" ]]; then
-    exec zellij attach -c
+    zellij attach -c
 fi
 
 # zsh functions
