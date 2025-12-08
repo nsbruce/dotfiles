@@ -1,5 +1,7 @@
 #! /bin/bash
 
+apt-get install build-essential
+
 cargo install --locked zellij
 
 
