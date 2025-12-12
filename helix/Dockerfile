@@ -1,15 +1,13 @@
 FROM ubuntu:24.04
 
-RUN apt-get update || apt-get update
-RUN apt-get install -y --no-install-recommends \
+RUN until apt-get update && apt-get install -y --no-install-recommends \
   curl \
   git \
   python3 \
   python3-venv \
   python3-pip \
   shellcheck \
-  ca-certificates
-
+  ca-certificates; do sleep 0.5; done
 RUN curl --output helix.deb --location https://github.com/helix-editor/helix/releases/download/25.07.1/helix_25.7.1-1_amd64.deb && \
     apt-get install -y ./helix.deb && \
     rm helix.deb
