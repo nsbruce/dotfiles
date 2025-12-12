@@ -5,5 +5,5 @@ set -o nounset
 set -o pipefail
 
 sleep "$1"
-notify-send "Timer complete" "$1"
+notify-send "Timer complete" "$2"
 beep

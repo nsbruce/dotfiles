@@ -134,6 +134,14 @@ tooltip label {
     background: @purple;
 }
 
+#memory.warning {
+    background: @yellow;
+}
+
+#memory.critical {
+    background: @red;
+}
+
 #disk {
     background: @green;
 }

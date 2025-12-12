@@ -7,6 +7,6 @@ font-family = Atkinson Hyperlegible Mono
 # minimum contrast should help with weird remote servers doing their dark blue on black color schemes
 minimum-contrast = 1.05
 
-theme=nord
+theme = Nord
 
 mouse-hide-while-typing = true
