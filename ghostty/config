@@ -10,3 +10,5 @@ minimum-contrast = 1.05
 theme = Nord
 
 mouse-hide-while-typing = true
+
+confirm-close-surface = false

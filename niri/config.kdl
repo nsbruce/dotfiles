@@ -244,8 +244,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
-    Mod+space hotkey-overlay-title="Run an Application" { spawn-sh "rofi -show drun"; }
-    Mod+L hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+    Mod+space hotkey-overlay-title="Run launcher" { spawn-sh "rofi -show drun"; }
+    Mod+L hotkey-overlay-title="Lock the screen" { spawn "hyprlock"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +10%"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -10%"; }
@@ -300,8 +300,10 @@ binds {
     // ...
 
     // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
+    Mod+Shift+Ctrl+Left hotkey-overlay-title="Move workspace to left monitor"  { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+Right { move-workspace-to-monitor-right; }
+    Mod+Shift+Ctrl+Up { move-workspace-to-monitor-up; }
+    Mod+Shift+Ctrl+Down {move-workspace-to-monitor-down; }
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
@@ -316,7 +318,7 @@ binds {
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
 
-    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Down hotkey-overlay-title="Move workspace down" { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }

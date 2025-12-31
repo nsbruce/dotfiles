@@ -8,14 +8,14 @@ cd -
 rm -rf xwayland-satellite
 
 # niri itself
-git clone https://github.com/YaLTeR/niri.git
+git clone https://github.com/YaLTeR/niri.git --branch v25.11
 cd niri
 cargo install --path . --locked
 mv resources/niri-session $HOME/.local/bin/
 mv resources/niri.desktop /usr/local/share/wayland-sessions/
-mv niri.service /etc/systemd/user/
+mv resources/niri.service /etc/systemd/user/
 echo 'You must update the path in /etc/systemd/user/niri.service to $(which niri)'
-mv niri-shutdown.target /etc/systemd/user/
+mv resources/niri-shutdown.target /etc/systemd/user/
 cd -
 rm -rf niri
 
