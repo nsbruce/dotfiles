@@ -228,6 +228,16 @@ window-rule {
     clip-to-geometry true
 }
 
+recent-windows {
+    // empty binds removes all defaults
+    binds {
+        Mod+Tab { next-window; }
+        Mod+Shift+Tab { previous-window; }
+        Mod+Alt+Tab { next-window filter="app-id"; }
+        Mod+Alt+Shift+Tab { previous-window filter="app-id"; }
+    }
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -286,8 +296,8 @@ binds {
     Mod+Ctrl+End  { move-column-to-last; }
 
     Mod+D  { focus-monitor-left; }
-    // Mod+Ctrl+Down  { focus-monitor-down; }
-    // Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
     Mod+H { focus-monitor-right; }
 
     Mod+Shift+D  { move-column-to-monitor-left; }
@@ -469,4 +479,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    
 }
