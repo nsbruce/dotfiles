@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
+source ~/.zsh_funcs/vpn.zsh
+
 exec 2>/dev/null
 
-/opt/cisco/anyconnect/bin/vpn stats | awk '
+vpn stats | awk '
 /Connection State:/ { state=$3 }
 /Duration:/         { duration=$2 }
 /Profile Name:/     { profile=$3 }
