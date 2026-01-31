@@ -2,13 +2,20 @@
     "height": 35, // Waybar height (default is auto height)
     // Choose the order of the modules
     "modules-left": ["niri/workspaces"],
-    "modules-center": ["idle_inhibitor", "clock#local", "pulseaudio"],
+    "modules-center": ["custom/vpn", "idle_inhibitor", "clock#local", "pulseaudio"],
     "modules-right": ["tray", "network", "battery", "memory", "disk", "clock#utc"],
 
     // Modules configuration
     "niri/workspaces": {
         "all-outputs": false,
         "disable-click": false,
+    },
+    "custom/vpn": {
+        "exec": "$HOME/.config/waybar/get-vpn-state.zsh",
+        "format": "🖧 {text}",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "ghostty -e $HOME/.config/waybar/toggle-vpn.zsh"
     },
     "tray": {
         "icon-size": 21,

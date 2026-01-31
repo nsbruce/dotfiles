@@ -16,6 +16,7 @@ mv resources/niri.desktop /usr/local/share/wayland-sessions/
 mv resources/niri.service /etc/systemd/user/
 echo 'You must update the path in /etc/systemd/user/niri.service to $(which niri)'
 mv resources/niri-shutdown.target /etc/systemd/user/
+mv resources/niri-portals.conf /usr/share/xdg-desktop-portal/
 cd -
 rm -rf niri
 
