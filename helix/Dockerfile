@@ -1,15 +1,22 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
+  software-properties-common \
+  zsh \
+  ca-certificates \
   curl \
   git \
-  python3 \
-  python3-venv \
-  python3-pip \
-  shellcheck \
-  ca-certificates \
-  npm \
   build-essential
+
+RUN chsh -s /usr/bin/zsh
+
+RUN add-apt-repository ppa:deadsnakes/ppa
+
+RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
+  python3.14 \
+  python3.14-venv \
+  shellcheck \
+  npm
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH=/root/.cargo/bin:$PATH
@@ -20,7 +27,7 @@ RUN curl --output helix.deb --location https://github.com/helix-editor/helix/rel
 
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN curl -sSL https://install.python-poetry.org | python3.14 -
 
 ENV VIRTUAL_ENV=/venv \
     POETRY_NO_INTERACTION=1 \
@@ -28,7 +35,7 @@ ENV VIRTUAL_ENV=/venv \
     
 ENV PATH=$VIRTUAL_ENV/bin:/root/.local/bin:$PATH
 
-RUN python3 -m venv $VIRTUAL_ENV
+RUN python3.14 -m venv $VIRTUAL_ENV
 
 RUN uv pip install \
   isort \
@@ -58,5 +65,7 @@ RUN cargo install --locked zellij
 RUN mkdir --parents /root/.config/helix /root/.config/dprint
 COPY config.toml languages.toml /root/.config/helix/
 COPY dprint.json /root/.config/dprint/
+
+RUN git config --global credential.helper store
 
 WORKDIR /workspace
