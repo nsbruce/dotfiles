@@ -46,8 +46,8 @@
 (deflayer arrows
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-  _    _    _    up   _    _    _    _    up   _    _    _    _    _     _    _    _     _    _    _    _
-  _    _    lft  down rght _    _    lft  down rght _    _    _                          _    _    _
+  _    _    _    up   _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    lft  down rght _    _    lft  down up   rght _    _                          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
   _    _    _              _              _    _    _    _               _    _    _     _    _   
 ) 
