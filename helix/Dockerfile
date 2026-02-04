@@ -66,6 +66,7 @@ RUN mkdir --parents /root/.config/helix /root/.config/dprint
 COPY config.toml languages.toml /root/.config/helix/
 COPY dprint.json /root/.config/dprint/
 
-RUN git config --global credential.helper store
+RUN git config --global credential.helper store && \
+    git config --global --add safe.directory /workspace
 
 WORKDIR /workspace
