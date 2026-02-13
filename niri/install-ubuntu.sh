@@ -2,26 +2,28 @@ apt-get install --assume-yes --no-install-recommends clang libudev-dev libgbm-de
 
 # xwayland-satellite is a dep since I want xwayland support
 git clone https://github.com/Supreeeme/xwayland-satellite.git
-cd xwayland-satellite
-cargo install --path .
-cd -
+(
+  cd xwayland-satellite || exit
+  cargo install --path .
+)
 rm -rf xwayland-satellite
 
 # niri itself
 git clone https://github.com/YaLTeR/niri.git --branch v25.11
-cd niri
-cargo install --path . --locked
-mv resources/niri-session $HOME/.local/bin/
-mv resources/niri.desktop /usr/local/share/wayland-sessions/
-mv resources/niri.service /etc/systemd/user/
-echo 'You must update the path in /etc/systemd/user/niri.service to $(which niri)'
-mv resources/niri-shutdown.target /etc/systemd/user/
-mv resources/niri-portals.conf /usr/share/xdg-desktop-portal/
-cd -
+(
+  cd niri || exit
+  cargo install --path . --locked
+  mv resources/niri-session "${HOME}"/.local/bin/
+  mv resources/niri.desktop /usr/local/share/wayland-sessions/
+  mv resources/niri.service /etc/systemd/user/
+  echo "You must update the path in /etc/systemd/user/niri.service to $(which niri)"
+  mv resources/niri-shutdown.target /etc/systemd/user/
+  mv resources/niri-portals.conf /usr/share/xdg-desktop-portal/
+)
 rm -rf niri
 
-mkdir --parents $HOME/.config/niri
-ln -s $PWD/config.kdl $HOME/.config/niri/config.kdl
+mkdir --parents "${HOME}"/.config/niri
+ln -s "${PWD}"/config.kdl "${HOME}"/.config/niri/config.kdl
 
 cp swayidle.service ~/.config/systemd/user/
 systemctl --userdaemon-reload

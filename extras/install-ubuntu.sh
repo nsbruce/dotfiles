@@ -8,19 +8,21 @@ echo "To install difftastic, get latest release from https://github.com/Wilfred/
 
 # automatic dark/light mode switching
 git clone git@gitlab.com:WhyNotHugo/darkman.git
-cd darkman
-make
-sudo make install PREFIX=/usr
-mv darkman.service /etc/systemd/user/darkman.service
-chown root:root /etc/systemd/user/darkman.service
-chmod 777 /etc/systemd/user/darkman.service
-cd -
+(
+  cd darkman || exit
+  make
+  sudo make install PREFIX=/usr
+  mv darkman.service /etc/systemd/user/darkman.service
+  chown root:root /etc/systemd/user/darkman.service
+  chmod 777 /etc/systemd/user/darkman.service
+)
 rm -rf darkman
-mkdir -p $HOME/.config/darkman
-ln -s $PWD/darkmanconfig.yaml $HOME/.config/darkman/config.yaml
+mkdir -p "${HOME}"/.config/darkman
+ln -s "${PWD}"/darkmanconfig.yaml "${HOME}"/.config/darkman/config.yaml
 systemctl --user enable --now darkman.service
 
 # lineselect
+export PATH=$HOME/.cargo/bin:$PATH
 cargo install lineselect
 
 # tbmk
@@ -35,23 +37,25 @@ systemctl start tlp.service
 
 # libscfg is a kanshi dependency
 git clone https://git.sr.ht/~emersion/libscfg
-cd libscfg
-meson build
-ninja -C build
-ninja -C build install
-cd -
+(
+  cd libscfg || exit
+  meson build
+  ninja -C build
+  ninja -C build install
+)
 rm -r libscfg
 
 # kanshi does automatic display switcheroo-ing
 git clone https://git.sr.ht/~emersion/kanshi
-cd kanshi
-meson build
-ninja -C build
-ninja -C build install
-cd -
+(
+  cd kanshi || exit
+  meson build
+  ninja -C build
+  ninja -C build install
+)
 rm -r kanshi
 
-mkdir -p $HOME/.config/kanshi
+mkdir -p "${HOME}"/.config/kanshi
 
 # wpaperd handles rotating wallpapers
 cargo install wpaperd
