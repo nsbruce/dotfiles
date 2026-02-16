@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
   ca-certificates \
   curl \
   git \
-  build-essential
+  build-essential \
+  clangd
 
 RUN chsh -s /usr/bin/zsh
 
@@ -61,12 +62,14 @@ RUN curl -Lo marksman https://github.com/artempyanykh/marksman/releases/download
     chmod 755 marksman
 
 RUN cargo install --locked zellij
+ENV SHELL=/usr/bin/zsh
 
 RUN mkdir --parents /root/.config/helix /root/.config/dprint
 COPY config.toml languages.toml /root/.config/helix/
 COPY dprint.json /root/.config/dprint/
 
-RUN git config --global credential.helper store && \
-    git config --global --add safe.directory /workspace
+RUN git config --global credential.helper store
 
 WORKDIR /workspace
+
+CMD ["zellij"]
