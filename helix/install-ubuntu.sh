@@ -1,8 +1,8 @@
 #! /bin/bash
 
-add-apt-repository -y ppa:maveonair/helix-editor
-apt update
-apt install -y --no-install-recommends helix
+curl --output helix.deb --location https://github.com/helix-editor/helix/releases/download/25.07.1/helix_25.7.1-1_amd64.deb
+apt-get install -y ./helix.deb
+rm helix.deb
 
 mkdir -p "${HOME}"/.config/helix
 ln -s "${PWD}"/config.toml "${HOME}"/.config/helix/config.toml
