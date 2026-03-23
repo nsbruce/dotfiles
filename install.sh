@@ -8,7 +8,7 @@ case $1 in
         ;;
     -r|--remote)
         echo "Installing remote dotfiles"
-        directories=( git zsh tmux neovim  )
+        directories=( git zsh zellij helix  )
         ;;
     -h|--help)
         echo "Usage: ./install.sh [-p|--primary] [-r|--remote]"
