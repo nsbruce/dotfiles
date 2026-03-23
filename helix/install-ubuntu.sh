@@ -18,5 +18,4 @@ apt install -y --no-install-recommends shellcheck
 snap install bash-language-server --classic
 
 # markdown lsp
-export PATH="${HOME}"/.cargo/bin:$PATH
-cargo install --locked --git https://github.com/Feel-ix-343/markdown-oxide.git markdown-oxide
+curl -Lo /usr/local/bin/marksman https://github.com/artempyanykh/marksman/releases/download/2025-12-13/marksman-linux-x64 && chmod 755 /usr/local/bin/marksman
