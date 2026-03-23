@@ -1,6 +1,6 @@
 #! /bin/bash
 
-apt-get install build-essential
+apt-get install -y build-essential
 
 export PATH="${HOME}"/.cargo/bin:"${PATH}"
 cargo install --locked zellij
