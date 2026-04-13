@@ -59,3 +59,9 @@ mkdir -p "${HOME}"/.config/kanshi
 
 # wpaperd handles rotating wallpapers
 cargo install wpaperd
+
+# devcontainers are how I like to do my development
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+apt install npm nodejs
+npm config set prefix ~/.local
+npm install -g @devcontainers/cli
