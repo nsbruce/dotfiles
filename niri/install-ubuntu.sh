@@ -9,7 +9,7 @@ git clone https://github.com/Supreeeme/xwayland-satellite.git
 rm -rf xwayland-satellite
 
 # niri itself
-git clone https://github.com/YaLTeR/niri.git --branch v25.11
+git clone https://github.com/niri-wm/niri.git --branch v26.04
 (
   cd niri || exit
   cargo install --path . --locked
