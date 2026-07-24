@@ -1,10 +1,6 @@
 #! /bin/bash
 
-# cat replacement
-apt-get install -y bat
-
-# better diffs
-echo "To install difftastic, get latest release from https://github.com/Wilfred/difftastic/releases and check the docs to see if they're on the apt repos yet. Put executable in .local/bin, then add the following to your ~/.gitconfig:\n[diff]\n    external = difft"
+apt-get install -y bat golang wl-clipboard gopass-jsonapi
 
 # automatic dark/light mode switching
 git clone git@gitlab.com:WhyNotHugo/darkman.git
@@ -12,7 +8,7 @@ git clone git@gitlab.com:WhyNotHugo/darkman.git
   cd darkman || exit
   make
   sudo make install PREFIX=/usr
-  mv darkman.service /etc/systemd/user/darkman.service
+  mv contrib/darkman.service /etc/systemd/user/darkman.service
   chown root:root /etc/systemd/user/darkman.service
   chmod 777 /etc/systemd/user/darkman.service
 )
@@ -24,9 +20,6 @@ systemctl --user enable --now darkman.service
 # lineselect
 export PATH=$HOME/.cargo/bin:$PATH
 cargo install lineselect
-
-# tbmk
-echo "To install tbmk, go to tbmk github and get latest release. Then put binary in ~/.local/bin along with the config.yaml file, but change the datadir in the yaml to ~/.local/w"
 
 # power efficiency
 add-apt-repository ppa:linrunner/tlp
@@ -65,3 +58,24 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 apt install npm nodejs
 npm config set prefix ~/.local
 npm install -g @devcontainers/cli
+
+# gopass
+curl https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg >/dev/null
+cat << EOF | sudo tee /etc/apt/sources.list.d/gopass.sources
+Types: deb
+URIs: https://packages.gopass.pw/repos/gopass
+Suites: stable
+Architectures: all amd64 arm64 armhf
+Components: main
+Signed-By: /usr/share/keyrings/gopass-archive-keyring.gpg
+EOF
+sudo apt update
+sudo apt install gopass gopass-archive-keyring
+
+echo "Ensure you own .mozilla, then run gopass-jsonapi configure"
+
+echo "To install displaylink go to the synaptics website and follow instructions. You can add an apt source and just do an apt install"
+
+echo "To install difftastic, get latest release from https://github.com/Wilfred/difftastic/releases and check the docs to see if they're on the apt repos yet. Put executable in .local/bin, then add the following to your ~/.gitconfig:\n[diff]\n    external = difft"
+
+echo "To install tbmk, go to tbmk github and get latest release. Then put binary in ~/.local/bin along with the config.yaml file, but change the datadir in the yaml to ~/.local/w"

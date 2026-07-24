@@ -2,12 +2,12 @@
 
 
 ## deps for rofi (wayland fork)
-apt-get install -y libpango1.0-dev flex bison # libgdk-pixbuf-2.0-dev
+apt-get install -y libpango1.0-dev flex bison cmake libgdk-pixbuf-2.0-dev libxcb-util-dev libxcb-xkb-dev libxkbcommon-x11-dev libxcb-ewmh-ewmh-dev libmpdclient-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-xinerama0-dev libxcb-keysyms1-dev libstartup-notification0-dev
 git clone https://github.com/lbonn/rofi
 cd rofi
 meson setup build
 ninja -C build
-sudo ninja -C build install
+ninja -C build install
 cd -
 rm -r rofi
 
@@ -15,14 +15,10 @@ rm -r rofi
 apt-get install -y rofi-dev qalc libtool
 git clone https://github.com/svenstaro/rofi-calc.git
 cd rofi-calc/
-mkdir m4
-autoreconf -i
-mkdir build
-cd build/
-../configure
-make
-make install
-cd ../..
+meson setup build
+meson compile -C build/
+cd build || exit
+meson install
 rm -r rofi-calc
 
 ## rofi-file-browser

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # notifications via mako
-apt-get install -y jq gperf libnotify-bin
+apt-get install -y jq gperf libnotify-bin meson ninja-build
 # basu is a dependency of mako
 git clone https://git.sr.ht/~emersion/basu
 cd basu
