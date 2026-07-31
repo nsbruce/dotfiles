@@ -1,6 +1,6 @@
 #! /bin/bash
 
-apt-get install -y bat golang wl-clipboard gopass-jsonapi
+apt-get install -y bat golang wl-clipboard gopass-jsonapi pipx
 
 # automatic dark/light mode switching
 git clone git@gitlab.com:WhyNotHugo/darkman.git
@@ -55,9 +55,11 @@ cargo install wpaperd
 
 # devcontainers are how I like to do my development
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-apt install npm nodejs
+apt install nodejs
 npm config set prefix ~/.local
 npm install -g @devcontainers/cli
+
+pipx install commitizen
 
 # gopass
 curl https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg >/dev/null
